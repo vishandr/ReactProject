@@ -1,0 +1,9 @@
+.App {
+    text-align: center;
+  }
+  
+  .logo {
+    height: 41px;
+    width: 41px;
+    pointer-events: none;
+  }
