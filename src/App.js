@@ -1,11 +1,11 @@
-// import Header from './components/Header'
 import Header from "./components/Header/Header";
+import Categories from "./components/Categories/Categories";
 
 function App() {
   return (
     <>
       <Header />
-      <h2>Category name</h2>
+      <Categories />
     </>
 
   );
