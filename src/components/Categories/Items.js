@@ -6,7 +6,7 @@ render(){
     return(
         <main>
         {this.props.items.map(el => (
-            <Item key={el.id} item={el}/>
+            <Item key={el.id} item={el} onAdd={this.props.onAdd}/>
             ))} 
         </main>
     )

@@ -1,13 +1,20 @@
 import React from "react";
 import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
+import Product from "./components/Product";
+import {Routes, Route, Link} from 'react-router-dom'
+
 
 class App extends React.Component {
   render(){
     return (
       <>
         <Header />
-        <Categories />
+          <Routes>
+            <Route path="/" element={<Categories/>} />
+            <Route path="/product" element={<Product/>} />
+          </Routes>
+        
       </>
 
     );

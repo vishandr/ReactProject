@@ -5,13 +5,11 @@
   .logo {
     height: 41px;
     width: 41px;
-    pointer-events: none;
-    /* position: absolute; */
     margin: 0 auto;
-    /* margin-left: calc(50% - 20px); */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+  }
+
+  .logo:hover{
+    scale: 1.05;
   }
 
   nav{
@@ -48,7 +46,6 @@ a {
 
 a:hover {
   color: #52D67A;
-  
 }
 
 .cart{
@@ -64,17 +61,15 @@ a:hover {
 }
 
 select{
-
-
   border: none;
   background-color: #FFFFFF;
   font-size: 18px;
   color: #1D1F22;
   font-style: normal;
-font-weight: 500;
-line-height: 160%;
-text-align: right;
-transition: all 0.5s ease;
+  font-weight: 500;
+  line-height: 160%;
+  text-align: right;
+  transition: all 0.5s ease;
 }
 
 .option{
@@ -83,8 +78,21 @@ transition: all 0.5s ease;
   font-size: 18px;
   color: #1D1F22;
   font-style: normal;
-font-weight: 500;
-line-height: 160%;
-text-align: right;
-transition: all 0.5s ease;
+  font-weight: 500;
+  line-height: 160%;
+  text-align: right;
+  transition: all 0.5s ease;
+}
+
+.cart-button{
+  transition: color 500ms ease;
+  width: 20px;
+  height: 41px;
+  margin-left: auto;
+  display: inline-flex;
+}
+
+.cart-button:hover{
+  color:#52D67A;
+  cursor: pointer;
 }
