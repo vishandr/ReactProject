@@ -2,6 +2,7 @@ import React from "react";
 import './categories.css'
 import goods from '../Goods/goods.json'
 import Items from "./Items";
+import Item2 from "./Item2";
 
 class Categories extends React.Component{
     constructor(props){
@@ -17,7 +18,10 @@ class Categories extends React.Component{
         return(
             <>
                 <h2> Category name </h2>
-                <Items items={this.state.items} onAdd={this.addToOrder}/>
+                {/* <Items items={this.state.items} onAdd={this.addToOrder}/> */}
+                <main>
+                    <Item2 />
+                </main>
             </>
         );
     }

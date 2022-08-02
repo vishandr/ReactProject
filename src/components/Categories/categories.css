@@ -9,6 +9,13 @@ img{
     padding: 16px;
 }
 
+main img{
+    /* width: 100%; */
+    /* padding: 16px; */
+    width: 354px;
+    height: 330px;
+}
+
 p{
     font-weight: 300;
     font-size: 18px;

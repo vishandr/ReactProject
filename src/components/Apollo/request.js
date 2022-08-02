@@ -7,3 +7,15 @@ query GetTitles{
   		}
 	}
 `;
+
+export const GET_ALL_PROD = gql`
+query GetAllProducts{
+	category (input: { title: "all" }){
+  products{
+	id
+	name
+	inStock
+	gallery
+  }
+}
+}`;
