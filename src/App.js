@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 
 
 class App extends React.Component {

@@ -2,9 +2,10 @@ import React from "react";
 import './header.css'
 // import Cart from './Cart'
 import { BsCart2 } from 'react-icons/bs'
+import NavLinks from './NavLinks'
 
-const nav = ['women', 'men', 'kids'];
-const navLinks = nav.map((link) => <li key={link}><a href="/">{link.toUpperCase()}</a></li>)
+// const nav = ['women', 'men', 'kids'];
+// const navLinks = nav.map((link) => <li key={link}><a href="/">{link.toUpperCase()}</a></li>)
 
 class Header extends React.Component{
   render(){
@@ -14,7 +15,10 @@ class Header extends React.Component{
        
         <nav>
           <div>
-            <ul>{navLinks}</ul>
+            {/* <ul>{navLinks}</ul> */}
+            <ul>
+            <NavLinks />
+            </ul>
           </div>
             <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a>
           <div className="cart">
