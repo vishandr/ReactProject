@@ -16,9 +16,9 @@ class App extends React.Component {
             <Route path="/product" element={<Product/>} />
             <Route path="/cart" element={<Cart/>} />
           </Routes>
-        
-      </>
 
+      </>
+      
     );
   }
 }

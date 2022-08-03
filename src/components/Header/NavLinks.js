@@ -12,6 +12,7 @@ return (
     data.categories.map(({name}) => 
     <li key={name}>
         <a href="/">{name.toUpperCase()}</a>
+        {/* <div onClick={() => this.props.chooseCategory(name)}>{name.toUpperCase()}</div> */}
     </li>)
 )
 }
