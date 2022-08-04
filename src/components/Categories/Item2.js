@@ -7,6 +7,7 @@ function Item2(){
 const { loading, error, data} = useQuery(GET_ALL_PROD);
 if (loading) return <h2>Loading...</h2>;
 if (error) return <p>Error :</p>;
+console.log(data.category.products)
 return (
     data.category.products.map(({id, name, gallery}) => 
     
@@ -24,7 +25,7 @@ return (
     // <li key={name}>
     //     <a href="/">{name.toUpperCase()}</a>
     // </li>)
-)
+    )
 }
 
 export default Item2;

@@ -10,13 +10,19 @@ query GetTitles{
 export const GET_ALL_PROD = gql`
 query GetAllProducts{
 	category (input: { title: "all" }){
-	products{
+  	products{
 		id
 		name
 		inStock
 		gallery
-  }
-}
+		prices{
+			currency{
+				symbol
+				}
+			amount
+		}
+  	}
+	}
 }`;
 
 export const GET_CURRENCY = gql`

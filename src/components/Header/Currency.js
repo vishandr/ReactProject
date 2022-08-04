@@ -5,14 +5,14 @@ import { useState } from 'react'
 
 
 function Currency(){
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('USD');
     
     function changeSelect(event) {
         setValue(event.target.value);
      }
 
     const { loading, error, data} = useQuery(GET_CURRENCY);
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :</p>;
     return(
         <select value={value} onChange={(event) => setValue(event.target.value)}>
