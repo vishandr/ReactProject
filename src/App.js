@@ -5,18 +5,16 @@ import Product from "./components/Product";
 import Cart from "./components/Cart";
 import {Routes, Route} from 'react-router-dom'
 
-
 class App extends React.Component {
   render(){
     return (
       <>
-        <Header />
+          <Header />
           <Routes>
             <Route path="/" element={<Categories/>} />
             <Route path="/product" element={<Product/>} />
             <Route path="/cart" element={<Cart/>} />
           </Routes>
-
       </>
       
     );

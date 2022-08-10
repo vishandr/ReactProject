@@ -11,10 +11,23 @@ import Currency from "./Currency";
 class Header extends React.Component{
   constructor (props){
     super(props)
-        this.chooseCategory = this.chooseCategory.bind(this)
+    this.chooseCategory = this.chooseCategory.bind(this);
+    // this.openCart = this.openCart.bind(this)
+    this.state = {
+      cartOpen : false,
+      currentCurrency : 'USD',
+    };
       }
 
+    onCurrencySelect = (event) => {
+      const currentCurrency = event.target.value;
+      this.setState(() => {
+        return {currentCurrency};
+      });
+    }
+    
   render(){
+
     return(
     
       <header className="header">
@@ -27,12 +40,13 @@ class Header extends React.Component{
           </div>
             <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a>
           <div className="cart">
-            <Currency />  
-            <BsCart2 className="cart-button"/>
+            <Currency 
+            onChangeHandler = {this.onCurrencySelect} 
+            value = {this.state.currentCurrency} 
+            />  
+            <BsCart2 className="cart-button" />
           </div>
         </nav>
-        
-        
         
       </header>
     
