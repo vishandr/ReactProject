@@ -15,23 +15,13 @@ class Header extends React.Component{
     // this.openCart = this.openCart.bind(this)
     this.state = {
       cartOpen : false,
-      currentCurrency : 'USD',
+      // currentCurrency : 'USD',
     };
       }
 
-    onCurrencySelect = (event) => {
-      const currentCurrency = event.target.value;
-      this.setState(() => {
-        return {currentCurrency};
-      });
-    }
-    
   render(){
-
     return(
-    
       <header className="header">
-       
         <nav>
           <div>
             <ul>
@@ -41,15 +31,13 @@ class Header extends React.Component{
             <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a>
           <div className="cart">
             <Currency 
-            onChangeHandler = {this.onCurrencySelect} 
+            onChangeHandler = {this.props.onChangeHandler} 
             value = {this.state.currentCurrency} 
             />  
             <BsCart2 className="cart-button" />
           </div>
-        </nav>
-        
+        </nav>  
       </header>
-    
     )
   }
 

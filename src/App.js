@@ -6,10 +6,22 @@ import Cart from "./components/Cart";
 import {Routes, Route} from 'react-router-dom'
 
 class App extends React.Component {
+  constructor (props){
+    super(props)
+    this.state = { currentCurrency : 'USD'};
+      }
+
+      onCurrencySelect = (event) => {
+        const currentCurrency = event.target.value;
+        this.setState(() => {
+          return {currentCurrency};
+        });
+      }
+
   render(){
     return (
       <>
-          <Header />
+          <Header onChangeHandler = {this.onCurrencySelect}/>
           <Routes>
             <Route path="/" element={<Categories/>} />
             <Route path="/product" element={<Product/>} />
