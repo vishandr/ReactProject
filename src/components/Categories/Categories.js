@@ -1,7 +1,7 @@
 import React from "react";
 import './categories.css'
 import goods from '../Goods/goods.json'
-import Items from "./Items";
+// import Items from "./Items";
 import Item2 from "./Item2";
 
 class Categories extends React.Component{
@@ -12,15 +12,15 @@ class Categories extends React.Component{
             items: goods
             }
         this.addToOrder=this.addToOrder.bind(this);
+        // console.log(this.props.currency)
     }
-
     render(){
         return(
             <>
                 <h2> Category name </h2>
                 {/* <Items items={this.state.items} onAdd={this.addToOrder}/> */}
                 <main>
-                    <Item2 />
+                    <Item2 currency={this.props.currency}/>
                 </main>
             </>
         );

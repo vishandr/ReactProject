@@ -23,7 +23,7 @@ class App extends React.Component {
       <>
           <Header onChangeHandler = {this.onCurrencySelect}/>
           <Routes>
-            <Route path="/" element={<Categories/>} />
+            <Route path="/" element={<Categories currency={this.state.currentCurrency}/>} />
             <Route path="/product" element={<Product/>} />
             <Route path="/cart" element={<Cart/>} />
           </Routes>

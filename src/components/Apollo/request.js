@@ -17,6 +17,7 @@ query GetAllProducts{
 		gallery
 		prices{
 			currency{
+				label
 				symbol
 				}
 			amount
