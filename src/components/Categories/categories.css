@@ -61,18 +61,23 @@ main .item{
     border-radius: 20px;
     background-color: #fff;
     /* visibility: hidden; */
+    /* display: hidden; */
     text-align: center;
     line-height: 35px;
-    
+    display: none;
+    z-index: 100;
 }
 
-.addToCart:hover{
-    transition: all 500ms ease;
+
+item .addToCart:hover{
+    /* transition: all 500ms ease; */
     /* transform: scale(1.05); */
-    /* visibility: visible; */
     height: 35px;
     width: 35px;
-    border-radius: 20px;
-    background-color: #52D67A;
-    color: #fff
+    /* border-radius: 20px; */
+    /* background-color: #52D67A; */
+    /* color: #fff; */
+    display: block;
+    visibility: initial;
+    /* display: flex; */
 }

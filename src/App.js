@@ -8,7 +8,11 @@ import {Routes, Route} from 'react-router-dom'
 class App extends React.Component {
   constructor (props){
     super(props)
-    this.state = { currentCurrency : 'USD'};
+    this.chooseCategory = this.chooseCategory.bind(this);
+    this.state = { 
+      currentCurrency : '',
+      currentItems : [],
+    };
       }
 
       onCurrencySelect = (event) => {
@@ -16,12 +20,20 @@ class App extends React.Component {
         this.setState(() => {
           return {currentCurrency};
         });
-      }
+      };
+
+      chooseCategory(category){
+        console.log(category)
+      };
+
 
   render(){
     return (
       <>
-          <Header onChangeHandler = {this.onCurrencySelect}/>
+          <Header 
+            onChangeHandler = {this.onCurrencySelect}
+            chooseCategory = {this.chooseCategory}
+            />
           <Routes>
             <Route path="/" element={<Categories currency={this.state.currentCurrency}/>} />
             <Route path="/product" element={<Product/>} />
