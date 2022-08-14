@@ -47,7 +47,10 @@ class App extends React.Component {
             currency={this.state.currentCurrency}
             items = {this.state.currentItems}
             />} />
-            <Route path="/product" element={<Product/>} />
+            <Route path="/product" element={<Product 
+            items = {this.state.currentItems}
+            currency={this.state.currentCurrency}  
+            />} />
             <Route path="/cart" element={<Cart/>} />
           </Routes>
       </>

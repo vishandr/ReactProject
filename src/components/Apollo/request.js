@@ -16,6 +16,14 @@ query GetAllProducts{
 		name
 		inStock
 		gallery
+		attributes{
+			id
+			name
+			items{
+			  id
+			  value
+			}
+		  }
 		prices{
 			currency{
 				label
@@ -23,6 +31,7 @@ query GetAllProducts{
 				}
 			amount
 		}
+		description
   	}
 	}
 }`;

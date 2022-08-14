@@ -1,0 +1,10 @@
+.gallery{
+display: flex;
+width: 79px;
+flex-direction: column;
+}
+
+.pdp_img{
+    width: 79px;
+    height: 80px;
+}
