@@ -12,6 +12,7 @@ query GetAllProducts{
 	category (input: { title: "all" }){
   	products{
 		id
+		category
 		name
 		inStock
 		gallery

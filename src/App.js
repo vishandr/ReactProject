@@ -11,21 +11,29 @@ class App extends React.Component {
     this.chooseCategory = this.chooseCategory.bind(this);
     this.state = { 
       currentCurrency : '',
+      items : this.props.data,
       currentItems : [],
     };
-      }
-
-      onCurrencySelect = (event) => {
-        const currentCurrency = event.target.value;
-        this.setState(() => {
-          return {currentCurrency};
-        });
+    this.state.currentItems = this.state.items;
+  }
+  
+  onCurrencySelect = (event) => {
+    const currentCurrency = event.target.value;
+    this.setState(() => {
+      return {currentCurrency};
+    });
+  };
+  
+  chooseCategory(category){
+    if (category === 'all'){
+      this.setState({currentItems: this.state.items})
+      return
+    };
+    this.setState({
+      currentItems: this.state.items.filter(el => el.category === category)
+    })
+    // console.log('currentItems = '+ this.state.currentItems)
       };
-
-      chooseCategory(category){
-        console.log(category)
-      };
-
 
   render(){
     return (
@@ -35,7 +43,10 @@ class App extends React.Component {
             chooseCategory = {this.chooseCategory}
             />
           <Routes>
-            <Route path="/" element={<Categories currency={this.state.currentCurrency}/>} />
+            <Route path="/" element={<Categories 
+            currency={this.state.currentCurrency}
+            items = {this.state.currentItems}
+            />} />
             <Route path="/product" element={<Product/>} />
             <Route path="/cart" element={<Cart/>} />
           </Routes>
