@@ -13,6 +13,7 @@ class App extends React.Component {
       currentCurrency : '',
       items : this.props.data,
       currentItems : [],
+      currentCategory: 'ALL'
     };
     this.state.currentItems = this.state.items;
   }
@@ -27,11 +28,13 @@ class App extends React.Component {
   chooseCategory(category){
     if (category === 'all'){
       this.setState({currentItems: this.state.items})
+      this.setState({currentCategory: "All products"})
       return
     };
     this.setState({
       currentItems: this.state.items.filter(el => el.category === category)
     })
+    this.setState({currentCategory: category})
     // console.log('currentItems = '+ this.state.currentItems)
       };
 
@@ -46,6 +49,7 @@ class App extends React.Component {
             <Route path="/" element={<Categories 
             currency={this.state.currentCurrency}
             items = {this.state.currentItems}
+            categoryName = {this.state.currentCategory}
             />} />
             <Route path="/product" element={<Product 
             items = {this.state.currentItems}

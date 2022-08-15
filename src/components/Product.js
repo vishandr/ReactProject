@@ -13,19 +13,21 @@ class Product extends React.Component{
                     <img key={image} src={image} className="pdp_img" alt={item.id}/>
                     )}
                 </div>
+                <img src={item.gallery[0]} alt="" className="main_img"/>
+                
                 <p>{item.name}</p>
                 
                     {item.attributes.map((el) => 
-                    <div key={el.id}>{el.name}
+                    <div key={el.id}><p className="attribute-name">{el.name.toUpperCase()}:</p>
                     {el.items.map((attr) => 
-                    <div key={attr.id}>{attr.value}</div>)}
+                    <div key={attr.id} className="size">{attr.value}</div>)}
                     </div>)}
                 
-                <p>PRICE:</p>
-                <p>{item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].currency.symbol}
+                <p className="attribute-name">PRICE:</p>
+                <p className="price">{item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].currency.symbol}
                 {item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].amount}
                 </p>
-                <button>ADD TO CART</button>
+                <button className="button_add_to_cart">ADD TO CART</button>
                 <p>{item.description}</p>
             </div>
             )

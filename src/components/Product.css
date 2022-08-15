@@ -1,10 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
 .gallery{
-display: flex;
+display: inline-flex;
 width: 79px;
 flex-direction: column;
+margin-right: 40px;
+float: left;
+cursor: pointer;
 }
 
 .pdp_img{
     width: 79px;
     height: 80px;
+}
+
+.main_img{
+    width: 610px;
+    height: 511px;
+    display: inline-flex;
+    float: left;
+    margin-right: 100px;
+}
+
+.attribute-name{
+font-family: 'Roboto Condensed';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 18px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #1D1F22;
+}
+
+.size{
+    width: 63px;
+    height: 45px;
+    border: solid #1D1F22 1px;
+    display: flex;
+    float: right;
+    margin: 12px;
+    flex-direction: row;
+}
+
+.button_add_to_cart{
+    display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px 32px;
+color: #FFFFFF;
+position: absolute;
+width: 292px;
+height: 52px;
+left: 929px;
+top: 560px;
+border: none;
+background: #5ECE7B;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+}
+
+.button_add_to_cart:hover{
+    background: #4dac66;
+    transition: all 0.5s ease;
+}
+
+.price{
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 18px;
+display: flex;
+align-items: center;
+color: #1D1F22;
 }
