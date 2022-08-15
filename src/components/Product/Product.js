@@ -1,11 +1,10 @@
 import React from "react";
+// import './Product.css'
 import './Product.css'
 
 class Product extends React.Component{
     render(){
-        // console.log(this.props.items[4])
         const item = this.props.items[2]
-        // console.log(item.gallery)
         return(
             <div>
                 <div className="gallery">
