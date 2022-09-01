@@ -1,5 +1,6 @@
 import React from "react";
 import { BsCart2 } from 'react-icons/bs'
+import './item.css'
 
 class Item extends React.Component{
   
@@ -11,7 +12,6 @@ render(){
             <img src={gallery[0]} alt={id} />
             <div className="priceBlock">
                 <p>{name}</p>
-              
                 <p>{prices.filter((item) => {
                 return item.currency.label.includes(this.props.currency)
                 })[0].currency.symbol}  
