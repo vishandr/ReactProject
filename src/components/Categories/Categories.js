@@ -11,7 +11,7 @@ class Categories extends React.Component{
         // this.addToOrder=this.addToOrder.bind(this);
     }
     render(){
-        console.log(this.props.items.category)
+        // console.log(this.props.items.category)
         return(
             <>
                 <h2> {this.props.categoryName} </h2>

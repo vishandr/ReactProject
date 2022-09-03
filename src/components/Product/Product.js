@@ -1,10 +1,17 @@
 import React from "react";
 // import './Product.css'
 import './Product.css'
+import { useParams } from "react-router-dom";
 
 class Product extends React.Component{
+    
+    
     render(){
-        const item = this.props.items[2]
+        const {productId} = this.props.params;
+        // const item = this.props.items[2]
+        const item = this.props.items.find((el) => 
+           el.id.includes(productId)
+        )
         return(
             <div>
                 <div className="gallery">
@@ -33,4 +40,8 @@ class Product extends React.Component{
     }
 }
 
-export default Product;
+export default (props) => (
+    <Product 
+    {...props}
+    params={useParams()}
+/>);

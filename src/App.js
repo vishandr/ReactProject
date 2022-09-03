@@ -51,11 +51,16 @@ class App extends React.Component {
             items = {this.state.currentItems}
             categoryName = {this.state.currentCategory}
             />} />
-            <Route path="/product" element={<Product 
+            <Route path="/:productId" element={<Product 
             items = {this.state.currentItems}
             currency={this.state.currentCurrency}  
             />} />
+            {/* <Route path="/product" element={<Product 
+            items = {this.state.currentItems}
+            currency={this.state.currentCurrency}  
+            />} /> */}
             <Route path="/cart" element={<Cart/>} />
+            <Route path="*" element={<h2>Page not found</h2>} />
           </Routes>
       </>
       
