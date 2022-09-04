@@ -8,10 +8,12 @@ class Product extends React.Component{
     
     render(){
         const {productId} = this.props.params;
-        // const item = this.props.items[2]
         const item = this.props.items.find((el) => 
            el.id.includes(productId)
-        )
+        );
+        function createMarkup() { 
+            return {__html: item.description}; };
+
         return(
             <div>
                 <div className="gallery">
@@ -34,7 +36,8 @@ class Product extends React.Component{
                 {item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].amount}
                 </p>
                 <button className="button_add_to_cart">ADD TO CART</button>
-                <p>{item.description}</p>
+                <div dangerouslySetInnerHTML={createMarkup()} />
+                {/* <p>{item.description}</p> */}
             </div>
             )
     }

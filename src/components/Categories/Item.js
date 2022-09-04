@@ -1,6 +1,7 @@
 import React from "react";
 import { BsCart2 } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import './item.css'
 
 class Item extends React.Component{
   
