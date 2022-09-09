@@ -1,23 +1,39 @@
 import React from "react";
-import './header.css'
+import './header.css';
 // import Cart from './Cart'
-import { BsCart2 } from 'react-icons/bs'
-import NavLinks from './NavLinks'
+import { BsCart2 } from 'react-icons/bs';
+import NavLinks from './NavLinks';
 import Currency from "./Currency";
+import CartDropdown from '../Cart-dropdown/Cart-dropdown';
+import { CartContext } from '../../contexts/cart-context';
+
 
 class Header extends React.Component{
+  static contextType = CartContext;
   constructor (props){
     super(props)
-    // this.openCart = this.openCart.bind(this)
+    // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
     this.state = {
-      cartOpen : false,
-      // currentCurrency : 'USD',
+      isCartOpen : false,
+      setIsCartOpen: () =>{},
+      currentCurrency : 'USD',
     };
-      }
-
-      
-
+    this.toggleIsCartOpen = () => {
+      this.setState(state => ({
+        isCartOpen : 
+          state.isCartOpen === true
+          ? false
+          : true,
+      }))
+    }
+  };
+  
   render(){
+        let value = this.context;
+        // console.log(value.isCartOpen)
+        // console.log(value.setIsCartOpen)
+        console.log(this.state.isCartOpen)
+
     return(
       <header className="header">
         <nav>
@@ -30,7 +46,9 @@ class Header extends React.Component{
             onChangeHandler = {this.props.onChangeHandler} 
             value = {this.state.currentCurrency} 
             />  
-            <BsCart2 className="cart-button" />
+            <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/>
+            {this.state.isCartOpen && <CartDropdown />}
+            {/* {value.isCartOpen && <CartDropdown />} */}
           </div>
         </nav>  
       </header>

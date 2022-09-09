@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from '@apollo/client'
 import { GET_ALL_PROD } from "./Apollo/request";
 import App from '../App'
+import {CartProvider} from '../contexts/cart-context'
 
 function Main(){
     
@@ -10,7 +11,9 @@ function Main(){
     if (error) return <p>Error :</p>;
 
     return (
-    <App data = {data.category.products}/>
+        <CartProvider>
+            <App data = {data.category.products}/>
+        </CartProvider>
     )
 }
 
