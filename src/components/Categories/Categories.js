@@ -1,26 +1,28 @@
 import React from "react";
 import './categories.css'
 import Item from "./Item";
+// import Item2 from "./Item2";
 
 class Categories extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            orders: [],
+            // orders: [],
             }
         // this.addToOrder=this.addToOrder.bind(this);
     }
     render(){
-        // console.log(this.props.items.category)
         return(
-            <>
-                <h2> {this.props.categoryName} </h2>
-                <main>
-                    <Item 
+<>
+            <h2> {this.props.categoryName} </h2>
+            <main>
+                {this.props.items.map((item) => 
+                <Item key={item.id}
+                    item={item}
                     currency={this.props.currency}
-                    items={this.props.items}
-                    />
-                </main>
+                />
+                )}
+            </main>
             </>
         );
     }

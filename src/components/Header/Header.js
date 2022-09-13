@@ -5,18 +5,18 @@ import { BsCart2 } from 'react-icons/bs';
 import NavLinks from './NavLinks';
 import Currency from "./Currency";
 import CartDropdown from '../Cart-dropdown/Cart-dropdown';
-import { CartContext } from '../../contexts/cart-context';
+// import { CartContext } from '../../contexts/cart-context';
 
 
 class Header extends React.Component{
-  static contextType = CartContext;
+  // static contextType = CartContext;
   constructor (props){
     super(props)
     // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
     this.state = {
       isCartOpen : false,
       setIsCartOpen: () =>{},
-      currentCurrency : 'USD',
+      // currentCurrency : '',
     };
     this.toggleIsCartOpen = () => {
       this.setState(state => ({
@@ -29,10 +29,10 @@ class Header extends React.Component{
   };
   
   render(){
-        let value = this.context;
+        // let value = this.context;
         // console.log(value.isCartOpen)
         // console.log(value.setIsCartOpen)
-        console.log(this.state.isCartOpen)
+        // console.log(this.state.isCartOpen)
 
     return(
       <header className="header">
