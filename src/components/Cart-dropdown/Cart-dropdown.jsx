@@ -1,5 +1,6 @@
 import React from "react";
-import './Cart-dropdown.css'
+import './Cart-dropdown.css';
+import { CartContext } from '../../contexts/cart-context';
 
 class CartDropdown extends React.Component{
     render(){

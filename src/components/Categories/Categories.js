@@ -11,18 +11,18 @@ class Categories extends React.Component{
             }
         // this.addToOrder=this.addToOrder.bind(this);
     }
-    render(){
+    render(){   
         return(
-<>
-            <h2> {this.props.categoryName} </h2>
-            <main>
-                {this.props.items.map((item) => 
-                <Item key={item.id}
-                    item={item}
-                    currency={this.props.currency}
-                />
-                )}
-            </main>
+            <>
+                <h2> {this.props.categoryName} </h2>
+                <main>
+                    {this.props.items.map((item) => 
+                    <Item key={item.id}
+                        item={item}
+                        currency={this.props.currency}
+                    />
+                    )}
+                </main>
             </>
         );
     }
