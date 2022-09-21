@@ -31,7 +31,7 @@ render(){
     // console.log(this.props.item)
     // console.log(this.props.item.id + ' ' + this.state.cartItems)
     // console.log(this.state)
-    // console.log(product.id)
+    console.log(this.context.cartItems)
     return (
         
         <div className="item" >

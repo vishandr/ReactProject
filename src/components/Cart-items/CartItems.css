@@ -1,0 +1,28 @@
+.cart-item-container{
+    display: flex;
+    width: 100%;
+}
+
+.cart-item-description-container{
+    width: 65%;
+    padding-top: 0;
+}
+
+.cart-item-image-container{
+    width: 35%;
+}
+
+.cart-item-quantity-container{
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    justify-content: space-between;
+}
+
+.cart-item-quantity-box{
+    border: 1px solid #1D1F22;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    
+}

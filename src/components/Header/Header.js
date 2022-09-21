@@ -47,7 +47,7 @@ class Header extends React.Component{
             value = {this.state.currentCurrency} 
             />  
             <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/>
-            {this.state.isCartOpen && <CartDropdown />}
+            {this.state.isCartOpen && <CartDropdown currency={this.props.currency}/>}
             {/* {value.isCartOpen && <CartDropdown />} */}
           </div>
         </nav>  

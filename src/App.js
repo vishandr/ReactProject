@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props)
     this.chooseCategory = this.chooseCategory.bind(this);
     this.state = { 
-      currentCurrency : '',
+      currentCurrency : 'USD',
       items : this.props.data,
       currentItems : [],
       currentCategory: 'ALL'
@@ -45,6 +45,7 @@ class App extends React.Component {
           <Header 
             onChangeHandler = {this.onCurrencySelect}
             chooseCategory = {this.chooseCategory}
+            currency={this.state.currentCurrency}
             />
           <Routes>
             <Route path="/" element={<Categories 
