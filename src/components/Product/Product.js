@@ -1,16 +1,16 @@
 import React from "react";
-// import './Product.css'
 import './Product.css'
 import { useParams } from "react-router-dom";
+import { CartContext } from '../../contexts/cart-context';
 
 class Product extends React.Component{
-    
     
     render(){
         const {productId} = this.props.params;
         const item = this.props.items.find((el) => 
-           el.id.includes(productId)
+        el.id.includes(productId)
         );
+        const addProductToCart = () => this.context.addToCart(item);
         function createMarkup() { 
             return {__html: item.description}; };
 
@@ -35,13 +35,16 @@ class Product extends React.Component{
                 <p className="price">{item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].currency.symbol}
                 {item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].amount}
                 </p>
-                <button className="button_add_to_cart">ADD TO CART</button>
+                <button className="button_add_to_cart"
+                        onClick={addProductToCart}>ADD TO CART</button>
                 <div dangerouslySetInnerHTML={createMarkup()} />
                 {/* <p>{item.description}</p> */}
             </div>
             )
     }
 }
+
+Product.contextType = CartContext;
 
 export default (props) => (
     <Product 

@@ -2,6 +2,7 @@ import React from "react";
 import './Cart-dropdown.css';
 import { CartContext } from '../../contexts/cart-context';
 import CartItems from "../Cart-items/CartItems";
+import { useNavigate } from 'react-router-dom'
 
 class CartDropdown extends React.Component{
 
@@ -13,6 +14,10 @@ class CartDropdown extends React.Component{
     }
    
     render(){
+        const navigate = this.props.navigate;
+        const goToCart = () => {
+            navigate('/cart')
+        };
 
         const newCartTotal = this.context.cartItems.reduce(
             (total, cartItem) => total + cartItem.quantity * cartItem.prices.find((price) => 
@@ -41,7 +46,8 @@ class CartDropdown extends React.Component{
                 {newCartTotal}
                 </div>
                 <div className="buttons-area">
-                    <button className="viev-bag-button">VIEV BAG</button>
+                    <button className="viev-bag-button"
+                            onClick={goToCart}>VIEV BAG</button>
                     <button className="go-to-checkout-button">CHECK OUT</button>
                 </div>
             </div>
@@ -50,4 +56,9 @@ class CartDropdown extends React.Component{
 }
 
 CartDropdown.contextType = CartContext
-export default CartDropdown;
+// export default CartDropdown;
+export default (props) => (
+    <CartDropdown 
+    {...props}
+    navigate={useNavigate()}
+/>);

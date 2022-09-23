@@ -6,10 +6,10 @@ import NavLinks from './NavLinks';
 import Currency from "./Currency";
 import CartDropdown from '../Cart-dropdown/Cart-dropdown';
 // import { CartContext } from '../../contexts/cart-context';
+import { Link } from 'react-router-dom'
 
 
 class Header extends React.Component{
-  // static contextType = CartContext;
   constructor (props){
     super(props)
     // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
@@ -29,18 +29,14 @@ class Header extends React.Component{
   };
   
   render(){
-        // let value = this.context;
-        // console.log(value.isCartOpen)
-        // console.log(value.setIsCartOpen)
-        // console.log(this.state.isCartOpen)
-
     return(
       <header className="header">
         <nav>
           <div>
             <NavLinks chooseCategory={this.props.chooseCategory}/>
           </div>
-            <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a>
+           <Link to='/' className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></Link>
+            {/* <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a> */}
           <div className="cart">
             <Currency 
             onChangeHandler = {this.props.onChangeHandler} 
