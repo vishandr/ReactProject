@@ -1,6 +1,7 @@
 .cart-item-container{
     display: flex;
     width: 100%;
+    margin: 5px;
 }
 
 .cart-item-description-container{

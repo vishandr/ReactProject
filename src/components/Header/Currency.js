@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from '@apollo/client'
 import { GET_CURRENCY } from '../Apollo/request'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 function Currency(props){
 

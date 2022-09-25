@@ -1,17 +1,17 @@
 import React from "react";
 import './Cart-dropdown.css';
 import { CartContext } from '../../contexts/cart-context';
-import CartItems from "../Cart-items/CartItems";
+import CartDropdownItems from "../Cart-dropdown-items/CartDropdownItems";
 import { useNavigate } from 'react-router-dom'
 
 class CartDropdown extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state= {
-        cartTotal : 0
-        }
-    }
+    // constructor(props){
+    //     super(props)
+    //     this.state= {
+    //     cartTotal : 0
+    //     }
+    // }
    
     render(){
         const navigate = this.props.navigate;
@@ -35,7 +35,7 @@ class CartDropdown extends React.Component{
                 <span>{this.context.cartCount} items</span>
                 <div className="cart-items">
                 {this.context.cartItems.map((item) => (
-                    <CartItems key={item.id} 
+                    <CartDropdownItems key={item.id} 
                         cartItem={item}
                         currency={this.props.currency}
                         />

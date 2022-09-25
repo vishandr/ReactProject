@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Product from "./components/Product/Product";
-import Cart from "./components/Cart";
+import Cart from "./components/Cart/Cart";
 import {Routes, Route} from 'react-router-dom'
 
 
@@ -57,7 +57,9 @@ class App extends React.Component {
             items = {this.state.currentItems}
             currency={this.state.currentCurrency}  
             />} />
-            <Route path="/cart" element={<Cart/>} />
+            <Route path="/cart" element={<Cart
+              currency={this.state.currentCurrency}
+            />} />
             <Route path="*" element={<h2>Page not found</h2>} />
           </Routes>
       </>

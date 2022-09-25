@@ -1,8 +1,8 @@
-import './CartItems.css';
+import './CartDropdownItems.css';
 import React from 'react';
 import {CartContext} from '../../contexts/cart-context'
 
-class CartItems extends React.Component{
+class CartDropdownItems extends React.Component{
     render(){
         const {gallery, attributes, prices, name, quantity } = this.props.cartItem
         const addItemHandler = () => this.context.addToCart(this.props.cartItem);
@@ -50,5 +50,5 @@ class CartItems extends React.Component{
     }
 }
 
-CartItems.contextType = CartContext;
-export default CartItems;
+CartDropdownItems.contextType = CartContext;
+export default CartDropdownItems;
