@@ -10,7 +10,7 @@ class Item extends React.Component{
 render(){
     const {gallery, id, prices, name } = this.props.item
     const addProductToCart = () => this.context.addToCart(this.props.item);
-
+    // console.log(this.context.currentCurrency)
     return (
         
         <div className="item" >
@@ -18,13 +18,10 @@ render(){
                     className='item-link'>
                 <img src={gallery[0]} alt={id} />
                 <div className="priceBlock" >
-                        <p>{name}</p>                
-                        <p>{prices.filter((item) => {
-                        return item.currency.label.includes(this.props.currency)
-                        })[0].currency.symbol}  
-                        {prices.filter((item) => {
-                        return item.currency.label.includes(this.props.currency)
-                        })[0].amount}</p>
+                    <p>{name}</p>                
+                    <p>{this.context.currentCurrencySymbol}
+                    {prices.find((item) =>
+                    item.currency.label === this.context.currentCurrencyLabel).amount}</p>
                     </div>
                 </Link>
                     <div className="addToCart"

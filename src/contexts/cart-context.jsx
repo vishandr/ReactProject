@@ -1,11 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext({
-    // isCartOpen: false,
-    // setIsCartOpen: () =>{},
-    // cartItems: [],
-    // setCartItems: () =>{},
-    // addToCart: () =>{},
+    
 });
 
 const addCartItem = (cartItems, productToAdd) => {
@@ -41,8 +37,18 @@ const removeCartItem = (cartItems, productToRemove) => {
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
     const [cartCount, setCartCount] = useState(0);
-    // const [cartTotal, setCartTotal] = useState(0);
-    
+    const [cartTotal, setCartTotal] = useState(0);
+    const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
+    const [currentCurrencySymbol, setCurrentCurrencySymbol] = useState('$');
+
+    const onCurrencySelect = (event) => {
+        let label = event.target.value.slice(0,3)
+        setCurrentCurrencyLabel(label);
+        let symbol = event.target.value.slice(3)
+        setCurrentCurrencySymbol(symbol);
+        // setCurrentCurrencySymbol(data.currency.find((el) => el.label === event.target.value).symbol);
+        };
+        
     const addToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
       };
@@ -57,18 +63,24 @@ export const CartProvider = ({children}) =>{
         setCartCount(newCartCount);
       }, [cartItems]);
 
-    // useEffect(() => {
-    //     const newCartTotal = cartItems.reduce(
-    //         (total, cartItem) => total + cartItem.quantity * cartItem.prices[0].amount, 0);
-    //     setCartTotal(newCartTotal);
-    // }, [cartItems])
+      useEffect(() => {
+        const cartTotal = cartItems.reduce(
+          (total, cartItem) => total + cartItem.quantity* cartItem.prices.find((price) => 
+          price.currency.label === currentCurrencyLabel).amount, 0);
+        setCartTotal(cartTotal);
+      }, [cartItems]);
+
     
     const value = {
         cartItems,
         addToCart,
         removeItemFromCart,
         cartCount,
-        // cartTotal
+        cartTotal,
+        onCurrencySelect,
+        currentCurrencyLabel,
+        currentCurrencySymbol
     };
+
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 };

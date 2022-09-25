@@ -11,20 +11,13 @@ class App extends React.Component {
     super(props)
     this.chooseCategory = this.chooseCategory.bind(this);
     this.state = { 
-      currentCurrency : 'USD',
+      // currentCurrency : 'USD',
       items : this.props.data,
       currentItems : [],
       currentCategory: 'ALL'
     };
     this.state.currentItems = this.state.items;
   }
-  
-  onCurrencySelect = (event) => {
-    const currentCurrency = event.target.value;
-    this.setState(() => {
-      return {currentCurrency};
-    });
-  };
   
   chooseCategory(category){
     if (category === 'all'){
@@ -43,23 +36,17 @@ class App extends React.Component {
     return (
       <>
           <Header 
-            onChangeHandler = {this.onCurrencySelect}
             chooseCategory = {this.chooseCategory}
-            currency={this.state.currentCurrency}
             />
           <Routes>
             <Route path="/" element={<Categories 
-            currency={this.state.currentCurrency}
             items = {this.state.currentItems}
             categoryName = {this.state.currentCategory}
             />} />
             <Route path="/:productId" element={<Product 
             items = {this.state.currentItems}
-            currency={this.state.currentCurrency}  
             />} />
-            <Route path="/cart" element={<Cart
-              currency={this.state.currentCurrency}
-            />} />
+            <Route path="/cart" element={<Cart/>} />
             <Route path="*" element={<h2>Page not found</h2>} />
           </Routes>
       </>

@@ -6,6 +6,7 @@ import { CartContext } from '../../contexts/cart-context';
 class Product extends React.Component{
     
     render(){
+        const { currentCurrencySymbol, currentCurrencyLabel } = this.context
         const {productId} = this.props.params;
         const item = this.props.items.find((el) => 
         el.id.includes(productId)
@@ -32,13 +33,13 @@ class Product extends React.Component{
                     </div>)}
                 
                 <p className="attribute-name">PRICE:</p>
-                <p className="price">{item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].currency.symbol}
-                {item.prices.filter((price)=>price.currency.label.includes(this.props.currency))[0].amount}
+                <p className="price">{currentCurrencySymbol}
+                {item.prices.find((item) =>
+                    item.currency.label === currentCurrencyLabel).amount}
                 </p>
                 <button className="button_add_to_cart"
                         onClick={addProductToCart}>ADD TO CART</button>
                 <div dangerouslySetInnerHTML={createMarkup()} />
-                {/* <p>{item.description}</p> */}
             </div>
             )
     }

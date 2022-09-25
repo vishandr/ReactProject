@@ -36,15 +36,10 @@ class Header extends React.Component{
             <NavLinks chooseCategory={this.props.chooseCategory}/>
           </div>
            <Link to='/' className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></Link>
-            {/* <a href="/" className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></a> */}
           <div className="cart">
-            <Currency 
-            onChangeHandler = {this.props.onChangeHandler} 
-            value = {this.state.currentCurrency} 
-            />  
+            <Currency />  
             <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/>
-            {this.state.isCartOpen && <CartDropdown currency={this.props.currency}/>}
-            {/* {value.isCartOpen && <CartDropdown />} */}
+            {this.state.isCartOpen && <CartDropdown />}
           </div>
         </nav>  
       </header>

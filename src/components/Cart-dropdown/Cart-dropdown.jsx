@@ -5,36 +5,20 @@ import CartDropdownItems from "../Cart-dropdown-items/CartDropdownItems";
 import { useNavigate } from 'react-router-dom'
 
 class CartDropdown extends React.Component{
-
-    // constructor(props){
-    //     super(props)
-    //     this.state= {
-    //     cartTotal : 0
-    //     }
-    // }
    
     render(){
+        const { currentCurrencySymbol, cartTotal, cartCount, cartItems } = this.context
         const navigate = this.props.navigate;
         const goToCart = () => {
             navigate('/cart')
         };
-
-        const newCartTotal = this.context.cartItems.reduce(
-            (total, cartItem) => total + cartItem.quantity * cartItem.prices.find((price) => 
-                price.currency.label === this.props.currency).amount, 0);
-        
-        let symbol
-        if (this.context.cartItems.length > 0){
-            symbol = this.context.cartItems[0].prices.find((item) => 
-            item.currency.label === this.props.currency).currency.symbol;
-        } else {symbol = 'USD'}
-
+      
         return(
             <div className="cart-dropdown-container">
                 <b>My Bag,</b>
-                <span>{this.context.cartCount} items</span>
+                <span>{cartCount} items</span>
                 <div className="cart-items">
-                {this.context.cartItems.map((item) => (
+                {cartItems.map((item) => (
                     <CartDropdownItems key={item.id} 
                         cartItem={item}
                         currency={this.props.currency}
@@ -42,8 +26,8 @@ class CartDropdown extends React.Component{
                 ))}
                 </div>
                 <div className="total-zone">
-                {symbol} 
-                {newCartTotal}
+                {currentCurrencySymbol} 
+                {cartTotal}
                 </div>
                 <div className="buttons-area">
                     <button className="viev-bag-button"

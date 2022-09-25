@@ -5,21 +5,17 @@ import {CartContext} from '../../contexts/cart-context'
 class CartDropdownItems extends React.Component{
     render(){
         const {gallery, attributes, prices, name, quantity } = this.props.cartItem
+        const { currentCurrencySymbol, currentCurrencyLabel } = this.context
         const addItemHandler = () => this.context.addToCart(this.props.cartItem);
         const removeItemHandler = () => this.context.removeItemFromCart(this.props.cartItem);
 
         return(
             <div className='cart-item-container'>
                 <div className='cart-item-description-container'>
-                {/* <div className="priceBlock"> */}
                 <p>{name}</p>
-                <p>
+                <p>{currentCurrencySymbol}
                     {prices.find((item) => {
-                        return item.currency.label === this.props.currency
-                    }).currency.symbol
-                    } 
-                    {prices.find((item) => {
-                        return item.currency.label === this.props.currency
+                        return item.currency.label === currentCurrencyLabel
                     }).amount}
                 </p>
                     <div>
