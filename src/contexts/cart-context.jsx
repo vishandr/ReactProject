@@ -41,14 +41,19 @@ export const CartProvider = ({children}) =>{
     const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
     const [currentCurrencySymbol, setCurrentCurrencySymbol] = useState('$');
 
-    const onCurrencySelect = (event) => {
-        let label = event.target.value.slice(0,3)
-        setCurrentCurrencyLabel(label);
-        let symbol = event.target.value.slice(3)
-        setCurrentCurrencySymbol(symbol);
-        // setCurrentCurrencySymbol(data.currency.find((el) => el.label === event.target.value).symbol);
-        };
+    // const onCurrencySelect = (event) => {
+    //     let label = event.target.value.slice(0,3)
+    //     setCurrentCurrencyLabel(label);
+    //     let symbol = event.target.value.slice(3)
+    //     setCurrentCurrencySymbol(symbol);
+    //     // setCurrentCurrencySymbol(data.currency.find((el) => el.label === event.target.value).symbol);
+    //     };
         
+    const onCurrencySelect = (event) => {
+      setCurrentCurrencyLabel(event.target.attributes[1].value);
+      setCurrentCurrencySymbol(event.target.attributes[2].value);
+    }
+
     const addToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
       };

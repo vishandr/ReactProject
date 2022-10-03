@@ -16,7 +16,7 @@ class Cart extends React.Component{
                         />
                 ))}
                 <div className="order-box">
-                    <p>Tax 21%: {currentCurrencySymbol} {cartTotal * 0.21}</p>
+                    <p>Tax 21%: {currentCurrencySymbol} {Math.floor(cartTotal * 21) / 100 }</p>
                     <p>Quantity: <b>{cartCount}</b> </p>
                     <p>Total: <b> {currentCurrencySymbol}  { cartTotal }</b></p>
                     <button>ORDER</button>
