@@ -7,6 +7,7 @@ import Currency from "./Currency";
 import CartDropdown from '../Cart-dropdown/Cart-dropdown';
 // import { CartContext } from '../../contexts/cart-context';
 import { Link } from 'react-router-dom'
+import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
 
 
 class Header extends React.Component{
@@ -35,7 +36,10 @@ class Header extends React.Component{
           <div>
             <NavLinks chooseCategory={this.props.chooseCategory}/>
           </div>
-           <Link to='/' className="logo"><img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/></Link>
+           <Link to='/' className="logo">
+           {/* <img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/> */}
+           <Shoplogo />
+           </Link>
           <div className="cart">
             <Currency />  
             <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/>

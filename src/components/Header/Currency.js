@@ -18,7 +18,7 @@ function Currency(props){
     if (error) return <p>Error :</p>;
     return(
         <div className='dropdown-currency' onClick={toggleDropdown}>
-        {currentCurrencySymbol} {currentCurrencyLabel}
+        {currentCurrencySymbol}
         {isOpen ? (<ul className="currency-select"
             onClick={onCurrencySelect}
             >
