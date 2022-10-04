@@ -4,7 +4,7 @@ import { CartContext } from '../../contexts/cart-context'
 import CartPageItem from "../CartPageItem/CartPageItem";
 
 class Cart extends React.Component{
-
+    
     render(){
         const { currentCurrencySymbol, cartCount, cartTotal, cartItems } = this.context
         return(

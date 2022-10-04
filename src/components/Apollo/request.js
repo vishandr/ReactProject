@@ -12,6 +12,7 @@ query GetAllProducts{
 	category (input: { title: "all" }){
   	products{
 		id
+		brand
 		category
 		name
 		inStock

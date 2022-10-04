@@ -11,23 +11,23 @@ import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
 
 
 class Header extends React.Component{
-  constructor (props){
-    super(props)
-    // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
-    this.state = {
-      isCartOpen : false,
-      setIsCartOpen: () =>{},
-      // currentCurrency : '',
-    };
-    this.toggleIsCartOpen = () => {
-      this.setState(state => ({
-        isCartOpen : 
-          state.isCartOpen === true
-          ? false
-          : true,
-      }))
-    }
-  };
+  // constructor (props){
+  //   super(props)
+  //   // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
+  //   this.state = {
+  //     isCartOpen : false,
+  //     setIsCartOpen: () =>{},
+  //     // currentCurrency : '',
+  //   };
+  //   this.toggleIsCartOpen = () => {
+  //     this.setState(state => ({
+  //       isCartOpen : 
+  //         state.isCartOpen === true
+  //         ? false
+  //         : true,
+  //     }))
+  //   }
+  // };
   
   render(){
     return(
@@ -42,8 +42,9 @@ class Header extends React.Component{
            </Link>
           <div className="cart">
             <Currency />  
-            <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/>
-            {this.state.isCartOpen && <CartDropdown />}
+            {/* <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/> */}
+            {/* {this.state.isCartOpen && <CartDropdown />} */}
+            <CartDropdown />
           </div>
         </nav>  
       </header>

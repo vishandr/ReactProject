@@ -14,6 +14,7 @@ class Categories extends React.Component{
                 <h2> {this.props.categoryName} </h2>
                 <main>
                     {this.props.items.map((item) => 
+                    
                     <Item key={item.id}
                         item={item}
                     />

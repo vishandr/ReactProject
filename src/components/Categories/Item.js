@@ -8,17 +8,16 @@ import { CartContext } from '../../contexts/cart-context'
 class Item extends React.Component{
 
 render(){
-    const {gallery, id, prices, name } = this.props.item
+    const {gallery, id, prices, name, brand } = this.props.item
     const addProductToCart = () => this.context.addToCart(this.props.item);
     // console.log(this.context.currentCurrency)
     return (
-        
         <div className="item" >
                 <Link to={`/${id}`}
                     className='item-link'>
                 <img src={gallery[0]} alt={id} />
                 <div className="priceBlock" >
-                    <p>{name}</p>                
+                    <p>{brand} {name}</p>                
                     <p>{this.context.currentCurrencySymbol}
                     {prices.find((item) =>
                     item.currency.label === this.context.currentCurrencyLabel).amount}</p>
