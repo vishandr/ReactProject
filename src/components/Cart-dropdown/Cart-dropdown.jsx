@@ -39,7 +39,7 @@ class CartDropdown extends React.Component{
     };
 
     handleClickOutside(event){
-        console.log(this.cartRef)
+        // console.log(this.cartRef)
         if(this.state.isCartOpen && this.cartRef && !this.cartRef.contains(event.target)){
             this.setState({
                 isCartOpen : false
@@ -56,9 +56,9 @@ class CartDropdown extends React.Component{
         };
       
         return(
-            <>
+            <div className="cart-dropdown-wrapper" ref={this.setCartRef}>
                 <CartLogo onClick={this.toggleIsCartOpen}/>
-                {this.state.isCartOpen && <div className="cart-dropdown-container" ref={this.setCartRef}>
+                {this.state.isCartOpen && <div className="cart-dropdown-container" >
                     <b>My Bag,</b>
                     <span>{cartCount} items</span>
                     <div className="cart-items">
@@ -79,7 +79,7 @@ class CartDropdown extends React.Component{
                         <button className="go-to-checkout-button">CHECK OUT</button>
                     </div>
                 </div>}
-            </>
+            </div>
         )
     }
 }

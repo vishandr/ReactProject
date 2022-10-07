@@ -19,16 +19,15 @@
     position: absolute;
     right: 20px;
     bottom: 20px;
-    height: 35px;
-    width: 35px;
-    border-radius: 20px;
-    background-color: rgb(67, 239, 61);
+    /* height: 35px; */
+    /* width: 35px; */
+    /* border-radius: 20px; */
+    /* background-color: rgb(67, 239, 61); */
     /* visibility: hidden; */
-    /* display: none; */
-    text-align: center;
+    display: none;
+    /* text-align: center; */
     line-height: 35px;
-    /* display: none; */
-    /* z-index: 100; */
+    z-index: 100;
 }
 
 
@@ -43,7 +42,7 @@
     /* color: #fff; */
     /* display: flex; */
     /* visibility: initial; */
-    display: block;
+    display: flex;
     text-align: center;
     line-height: 35px;
 }

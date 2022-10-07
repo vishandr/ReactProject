@@ -1,16 +1,16 @@
 import React from "react";
-import { BsCart2 } from 'react-icons/bs'
+// import { BsCart2 } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import './item.css'
 import { CartContext } from '../../contexts/cart-context'
-
+import { ReactComponent as CircleIcon } from '../../assets/circle_icon.svg'
 
 class Item extends React.Component{
 
 render(){
     const {gallery, id, prices, name, brand } = this.props.item
     const addProductToCart = () => this.context.addToCart(this.props.item);
-    // console.log(this.context.currentCurrency)
+    console.log(this.props.item)
     return (
         <div className="item" >
                 <Link to={`/${id}`}
@@ -24,7 +24,8 @@ render(){
                     </div>
                 </Link>
                     <div className="addToCart"
-                    onClick={addProductToCart}><BsCart2 /></div>
+                    onClick={addProductToCart}><CircleIcon/></div>
+                    {/* onClick={addProductToCart}><BsCart2 /></div> */}
                 {/* )}
                 </CartContext.Consumer> */}
             </div>
