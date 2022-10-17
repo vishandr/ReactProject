@@ -77,3 +77,14 @@ display: flex;
 align-items: center;
 color: #1D1F22;
 }
+
+.active{
+    background-color: rgb(102, 200, 10);
+}
+
+.testClass{
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    border: solid #1D1F22 1px;
+}

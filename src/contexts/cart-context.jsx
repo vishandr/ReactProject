@@ -34,8 +34,17 @@ const removeCartItem = (cartItems, productToRemove) => {
     );
 };
 
+const rememberAttributes = (cartItemsAttributes, productToAdd) => {
+  // if (cartItemsAttributes.length === 0){
+    // return [{ id: productToAdd.id, attributes: productToAdd.attributes}]
+  // };
+  return [...cartItemsAttributes, { ...productToAdd}]
+};
+
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
+    const [cartItemsAttributes, setCartItemsAttributes] = useState([]);
+    const [productAttributes, setProductAttributes] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
     const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
@@ -49,10 +58,20 @@ export const CartProvider = ({children}) =>{
     //     // setCurrentCurrencySymbol(data.currency.find((el) => el.label === event.target.value).symbol);
     //     };
         
+    // setCartItemsAttributes(productToAdd) => {};
+
     const onCurrencySelect = (event) => {
       setCurrentCurrencyLabel(event.target.attributes[1].value);
       setCurrentCurrencySymbol(event.target.attributes[2].value);
     }
+
+    // const getAttributes = (productToAdd) => {
+    // setCartItemsAttributes(rememberAttributes(cartItemsAttributes, productToAdd))
+    // };
+
+    // const addAttributesToCart = (productToAdd) => {
+    //   setCartItemsAttributes(addCartItemAttributes((cartItemsAttributes, productToAdd)))
+    // };
 
     const addToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
@@ -84,7 +103,9 @@ export const CartProvider = ({children}) =>{
         cartTotal,
         onCurrencySelect,
         currentCurrencyLabel,
-        currentCurrencySymbol
+        currentCurrencySymbol,
+        cartItemsAttributes,
+        // getAttributes,
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>
