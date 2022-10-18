@@ -23,6 +23,7 @@ class CartDropdown extends React.Component{
         };
 
         this.setCartRef = this.setCartRef.bind(this);
+        this.setCartRef2 = this.setCartRef2.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
     };
     
@@ -37,10 +38,14 @@ class CartDropdown extends React.Component{
     setCartRef(node){
         this.cartRef = node;
     };
+    
+    setCartRef2(node){
+        this.cartRef2 = node;
+    };
 
     handleClickOutside(event){
         // console.log(this.cartRef)
-        if(this.state.isCartOpen && this.cartRef && !this.cartRef.contains(event.target)){
+        if(this.state.isCartOpen && this.cartRef && this.cartRef.contains(event.target) && !this.cartRef2.contains(event.target)){
             this.setState({
                 isCartOpen : false
                   });
@@ -56,9 +61,10 @@ class CartDropdown extends React.Component{
         };
       
         return(
-            <div className="cart-dropdown-wrapper" ref={this.setCartRef}>
+            <div className="cart-dropdown-wrapper" >
                 <CartLogo onClick={this.toggleIsCartOpen}/>
-                {this.state.isCartOpen && <div className="cart-dropdown-container" >
+                {this.state.isCartOpen && <div className="cart-overlay" ref={this.setCartRef}>
+                <div className="cart-dropdown-container" ref={this.setCartRef2}>
                     <b>My Bag,</b>
                     <span>{cartCount} items</span>
                     <div className="cart-items">
@@ -78,7 +84,9 @@ class CartDropdown extends React.Component{
                                 onClick={goToCart}>VIEV BAG</button>
                         <button className="go-to-checkout-button">CHECK OUT</button>
                     </div>
-                </div>}
+                </div>
+                </div> 
+                }
             </div>
         )
     }

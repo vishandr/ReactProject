@@ -2,6 +2,11 @@
   body {
     --bodyWidth: max-width;
   }
+
+  header{
+    height: 52px;
+  }
+
   .logo {
     height: 41px;
     width: 41px;

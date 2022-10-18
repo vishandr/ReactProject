@@ -11,24 +11,6 @@ import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
 
 
 class Header extends React.Component{
-  // constructor (props){
-  //   super(props)
-  //   // this.toggleIsCartOpen = this.toggleIsCartOpen.bind(this)
-  //   this.state = {
-  //     isCartOpen : false,
-  //     setIsCartOpen: () =>{},
-  //     // currentCurrency : '',
-  //   };
-  //   this.toggleIsCartOpen = () => {
-  //     this.setState(state => ({
-  //       isCartOpen : 
-  //         state.isCartOpen === true
-  //         ? false
-  //         : true,
-  //     }))
-  //   }
-  // };
-  
   render(){
     return(
       <header className="header">
