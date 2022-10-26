@@ -7,15 +7,14 @@ import './currency.css'
 
 function Currency(props){
     const ref = useRef();
+    const ref1 = useRef();
     // const[isOpen, setIsOpen] = useState(false);
     const { isOpen, toggleDropdown, closeCurrencyMenu, onCurrencySelect, currentCurrencySymbol } = useContext(CartContext);
     useEffect(() => {
         const handleClickOutside = (event) => {
             // If the menu is open and the clicked target is not within the menu,
             // then close the menu
-            // console.log(ref.current)
-            // console.log(!ref.current.contains(event.target))
-            if(isOpen && ref.current && !ref.current.contains(event.target)){
+            if(isOpen && ref.current && !ref.current.contains(event.target) && !ref1.current.contains(event.target)){
                 closeCurrencyMenu()
             }
         }
@@ -26,17 +25,12 @@ function Currency(props){
         }
     }, [isOpen]);
 
-    // const toggleDropdown = () => {
-    //     (isOpen) ? setIsOpen(false) : setIsOpen(true);
-    // }
-
-
     const { loading, error, data} = useQuery(GET_CURRENCY);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :</p>;
     return(
         <>
-            <div className='dropdown-currency'  
+            <div className='dropdown-currency' ref={ref1}
                 onClick={toggleDropdown}
                 >{currentCurrencySymbol}
             </div>
