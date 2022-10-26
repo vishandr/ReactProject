@@ -34,21 +34,28 @@ const removeCartItem = (cartItems, productToRemove) => {
     );
 };
 
-const rememberAttributes = (cartItemsAttributes, productToAdd) => {
+// const rememberAttributes = (cartItemsAttributes, productToAdd) => {
   // if (cartItemsAttributes.length === 0){
     // return [{ id: productToAdd.id, attributes: productToAdd.attributes}]
   // };
-  return [...cartItemsAttributes, { ...productToAdd}]
-};
+  // return [...cartItemsAttributes, { ...productToAdd}]
+// };
 
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
     const [cartItemsAttributes, setCartItemsAttributes] = useState([]);
-    const [productAttributes, setProductAttributes] = useState([]);
+    // const [productAttributes, setProductAttributes] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
     const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
     const [currentCurrencySymbol, setCurrentCurrencySymbol] = useState('$');
+    const[isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      (isOpen) ? setIsOpen(false) : setIsOpen(true);
+  }
+
+  const closeCurrencyMenu = () => setIsOpen(false);
 
     // const onCurrencySelect = (event) => {
     //     let label = event.target.value.slice(0,3)
@@ -63,6 +70,7 @@ export const CartProvider = ({children}) =>{
     const onCurrencySelect = (event) => {
       setCurrentCurrencyLabel(event.target.attributes[1].value);
       setCurrentCurrencySymbol(event.target.attributes[2].value);
+      setIsOpen(false);
     }
 
     // const getAttributes = (productToAdd) => {
@@ -105,6 +113,9 @@ export const CartProvider = ({children}) =>{
         currentCurrencyLabel,
         currentCurrencySymbol,
         cartItemsAttributes,
+        isOpen,
+        toggleDropdown,
+        closeCurrencyMenu,
         // getAttributes,
     };
 

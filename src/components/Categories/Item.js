@@ -10,25 +10,27 @@ class Item extends React.Component{
 render(){
     const {gallery, id, prices, name, brand } = this.props.item
     const addProductToCart = () => this.context.addToCart(this.props.item);
-    console.log(this.props.item)
+    // console.log(this.props.item)
     return (
         <div className="item" >
-                <Link to={`/${id}`}
-                    className='item-link'>
-                <img src={gallery[0]} alt={id} />
-                <div className="priceBlock" >
-                    <p>{brand} {name}</p>                
-                    <p>{this.context.currentCurrencySymbol}
-                    {prices.find((item) =>
-                    item.currency.label === this.context.currentCurrencyLabel).amount}</p>
-                    </div>
+            <div className="img-container">
+                <Link to={`/${id}`} className='item-link'>
+                    <img src={gallery[0]} alt={id} />
                 </Link>
-                    <div className="addToCart"
-                    onClick={addProductToCart}><CircleIcon/></div>
-                    {/* onClick={addProductToCart}><BsCart2 /></div> */}
-                {/* )}
-                </CartContext.Consumer> */}
             </div>
+        
+            <div className="priceBlock" >
+                <p>{brand} {name}</p>                
+                <p>{this.context.currentCurrencySymbol}
+                {prices.find((item) =>
+                item.currency.label === this.context.currentCurrencyLabel).amount}</p>
+            </div>
+            <div className="addToCart"
+                onClick={addProductToCart}><CircleIcon/></div>
+                {/* onClick={addProductToCart}><BsCart2 /></div> */}
+            {/* )}
+            </CartContext.Consumer> */}
+        </div>
         )
     }
 }

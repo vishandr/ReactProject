@@ -14,21 +14,21 @@ class Header extends React.Component{
   render(){
     return(
       <header className="header">
-        <nav>
-          <div>
+        {/* <nav> */}
+          {/* <div className="nav-links"> */}
             <NavLinks chooseCategory={this.props.chooseCategory}/>
-          </div>
+          {/* </div> */}
+          <div className="logo-wrapper">
            <Link to='/' className="logo">
            {/* <img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/> */}
            <Shoplogo />
            </Link>
-          <div className="cart">
-            <Currency />  
-            {/* <BsCart2 className="cart-button" onClick={this.toggleIsCartOpen}/> */}
-            {/* {this.state.isCartOpen && <CartDropdown />} */}
+           </div>
+          <div className="actions">
+            <Currency />   
             <CartDropdown />
           </div>
-        </nav>  
+        {/* </nav>   */}
       </header>
     )
   }

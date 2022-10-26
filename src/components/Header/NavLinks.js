@@ -9,11 +9,13 @@ if (loading) return <h2>Loading...</h2>;
 if (error) return <p>Error :</p>;
 
 return (
-    data.categories.map(({name}) => 
-    <div key={name} className="navLinks" onClick={()=>props.chooseCategory(name)}>
-    {name.toUpperCase()}
-    </div>)
-)
+    <div className="nav-links-wrapper">
+        {data.categories.map(({name}) => 
+        <div key={name} className="navLinks" onClick={()=>props.chooseCategory(name)}>
+        {name.toUpperCase()}
+        </div>)}
+    </div>
+    )
 }
 
 export default NavLinks;
