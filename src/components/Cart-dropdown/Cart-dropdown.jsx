@@ -9,6 +9,7 @@ class CartDropdown extends React.Component{
     constructor(props){
         super(props);
         this.cartRef = React.createRef;
+        this.cartRef2 = React.createRef;
         
         this.state = {
             isCartOpen : false,
@@ -48,7 +49,7 @@ class CartDropdown extends React.Component{
         if(this.state.isCartOpen && this.cartRef && this.cartRef.contains(event.target) && !this.cartRef2.contains(event.target)){
             this.setState({
                 isCartOpen : false
-                  });
+                });
         }
     }
 
@@ -59,7 +60,7 @@ class CartDropdown extends React.Component{
         const goToCart = () => {
             navigate('/cart')
         };
-      
+
         return(
             <div className="cart-dropdown-wrapper" >
                 <CartLogo onClick={this.toggleIsCartOpen}/>

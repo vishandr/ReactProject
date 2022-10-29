@@ -35,19 +35,18 @@ class App extends React.Component {
   render(){
     return (
       <>
-          <Header 
-            chooseCategory = {this.chooseCategory}
-            />
           <Routes>
-            <Route path="/" element={<Categories 
-            items = {this.state.currentItems}
-            categoryName = {this.state.currentCategory}
-            />} />
-            <Route path="/:productId" element={<Product 
-            items = {this.state.currentItems}
-            />} />
-            <Route path="/cart" element={<Cart/>} />
-            <Route path="*" element={<h2>Page not found</h2>} />
+            <Route path="/" element={<Header chooseCategory = {this.chooseCategory}/>}>
+              <Route index element={<Categories 
+              items = {this.state.currentItems}
+              categoryName = {this.state.currentCategory}
+              />} />
+              <Route path="/:productId" element={<Product 
+              items = {this.state.currentItems}
+              />} />
+              <Route path="/cart" element={<Cart/>} />
+              <Route path="*" element={<h2>Page not found</h2>} />
+            </Route>
           </Routes>
       </>
       

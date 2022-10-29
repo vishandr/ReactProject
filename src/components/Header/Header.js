@@ -6,7 +6,7 @@ import NavLinks from './NavLinks';
 import Currency from "./Currency";
 import CartDropdown from '../Cart-dropdown/Cart-dropdown';
 // import { CartContext } from '../../contexts/cart-context';
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
 
 
@@ -14,7 +14,6 @@ class Header extends React.Component{
   render(){
     return(
       <header className="header">
-        {/* <nav> */}
           {/* <div className="nav-links"> */}
             <NavLinks chooseCategory={this.props.chooseCategory}/>
           {/* </div> */}
@@ -28,7 +27,7 @@ class Header extends React.Component{
             <Currency />   
             <CartDropdown />
           </div>
-        {/* </nav>   */}
+          <Outlet />
       </header>
     )
   }
