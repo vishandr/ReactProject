@@ -4,33 +4,38 @@ import './header.css';
 import { BsCart2 } from 'react-icons/bs';
 import NavLinks from './NavLinks';
 import Currency from "./Currency";
-import CartDropdown from '../Cart-dropdown/Cart-dropdown';
-// import { CartContext } from '../../contexts/cart-context';
+// import CartDropdown from '../Cart-dropdown/Cart-dropdown';
+import { CartContext } from '../../contexts/cart-context';
 import { Link, Outlet } from 'react-router-dom'
 import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
+// import { ReactComponent as CartLogo} from '../../assets/cart.svg'
+import CartIcon from '../Cart-icon/Cart-icon'
+import CartDropdown1 from "../Cart-dropdown/Cart-dropdown1";
 
 
 class Header extends React.Component{
+
   render(){
+    const { isCartOpen } = this.context;
     return(
       <header className="header">
           {/* <div className="nav-links"> */}
             <NavLinks chooseCategory={this.props.chooseCategory}/>
-          {/* </div> */}
           <div className="logo-wrapper">
            <Link to='/' className="logo">
-           {/* <img src="https://img.icons8.com/material/344/shopaholic.png" alt="logo"/> */}
            <Shoplogo />
            </Link>
            </div>
           <div className="actions">
             <Currency />   
-            <CartDropdown />
+            <CartIcon />
+            {/* {isCartOpen && <CartDropdown />} */}
           </div>
+            {isCartOpen && <CartDropdown1 />}
           <Outlet />
       </header>
     )
   }
 }
-
+Header.contextType = CartContext;
 export default Header;

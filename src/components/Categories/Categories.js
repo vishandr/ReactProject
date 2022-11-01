@@ -11,7 +11,7 @@ class Categories extends React.Component{
     render(){   
         return(
             <>
-                <h2> {this.props.categoryName} </h2>
+                <h2 className="top-title"> {this.props.categoryName} </h2>
                 <main>
                     {this.props.items.map((item) => 
                     

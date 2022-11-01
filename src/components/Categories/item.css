@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
+    padding-top: 16px;
     width: 386px;
+    height: 444px;
     justify-content: center;
     align-items: center;
     margin-bottom: 103px;
@@ -14,12 +15,20 @@
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.89);
 }
 
-.item img {
+.img-container{
+    display: flex;
+    box-sizing: border-box;
+    height: 330px;
+    /* width: 354px; */
     box-sizing: border-box;
 }
 
-.img-container{
-    display: flex;
+.item img {
+    box-sizing: border-box;
+    padding: 16px;
+    max-width: 354px;
+    height: 330px;
+    object-fit: cover;
 }
 
 .priceBlock{

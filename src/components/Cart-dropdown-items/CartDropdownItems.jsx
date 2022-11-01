@@ -4,7 +4,7 @@ import {CartContext} from '../../contexts/cart-context'
 
 class CartDropdownItems extends React.Component{
     render(){
-        const {gallery, attributes, prices, name, quantity } = this.props.cartItem
+        const {brand, gallery, attributes, prices, name, quantity } = this.props.cartItem
         const { currentCurrencySymbol, currentCurrencyLabel } = this.context
         const addItemHandler = () => this.context.addToCart(this.props.cartItem);
         const removeItemHandler = () => this.context.removeItemFromCart(this.props.cartItem);
@@ -12,19 +12,26 @@ class CartDropdownItems extends React.Component{
         return(
             <div className='cart-item-container'>
                 <div className='cart-item-description-container'>
-                <p>{name}</p>
-                <p>{currentCurrencySymbol}
+                <p className="dropdown-p">{brand}</p>
+                <p className="dropdown-p">{name}</p>
+                <p className='cart-dropdown-price dropdown-p'>{currentCurrencySymbol}
                     {prices.find((item) => {
                         return item.currency.label === currentCurrencyLabel
                     }).amount}
                 </p>
-                    <div>
+
+                    <div className='cart-dropdown-attributes'>
                     {attributes.map((el) => 
-                    <div key={el.id}><p className="attribute-name">{el.name.toUpperCase()}:</p>
-                    {el.items.map((attr) => 
-                    <div key={attr.id} className="size">{attr.value}</div>)}
+                    <div key={el.id}><p className="cart-dropdown-attribute-name">{el.name}:</p>
+                    <div className='cart-dropdown-attributes-container'>{el.items.map((attr) => 
+                    <div key={attr.id} className="cart-dropdown-attribute-size" style={{backgroundColor: attr.value}}>
+                    {/* {attr.value} */}
+                    {(el.name === 'Color') ? null: attr.value }
+                    
+                    </div>)}</div>
                     </div>)}
                     </div>
+
                 </div>
 
                 <div className='cart-item-quantity-container'>

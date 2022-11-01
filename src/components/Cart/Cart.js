@@ -7,6 +7,7 @@ class Cart extends React.Component{
     
     render(){
         const { currentCurrencySymbol, cartCount, cartTotal, cartItems } = this.context
+        // console.log(cartItems)
         return(
             <>
                 <h1>CART</h1>

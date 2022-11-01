@@ -1,0 +1,41 @@
+.cart-overlay{
+    position: absolute;
+    top: 78px;
+    left: -100px;
+    width: 100vw;
+    height: 1435px;
+    background-color: rgba(57, 55, 72, 0.22);
+    z-index: 2;
+    /* border: 1px solid red */
+}
+
+.cart-dropdown-container{
+    position: absolute;
+    /* border: 1px solid black; */
+    z-index: 3;
+    width: 325px;
+    /* height: 677px; */
+    /* left: 1043px; */
+    right: 72px;
+    top: 0px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+    gap: 32px
+}
+
+.dropdown-p{
+    font-size: 16px;
+    margin: 0;
+}
+
+.cart-items-container{
+    position: relative;
+    width: 100%;
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+}
+

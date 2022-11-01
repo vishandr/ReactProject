@@ -1,7 +1,13 @@
-h2{
+.top-title{
     font-weight: 400;
     font-size: 42px;
     line-height: 160%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin-top: 78px;
+    margin-bottom: 102px;
 }
 
 main{
@@ -9,15 +15,7 @@ main{
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
-    justify-content: space-between;
-}
-
-main img{
-    /* width: 354px; */
-    max-width: 354px;
-    height: 330px;
-    padding: 16px;
-    object-fit: cover;
+    justify-content: space-between
 }
 
 p{

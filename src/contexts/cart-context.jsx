@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext({
-    
+  isCartOpen: false,
+  setIsCartOpen: () => {},
 });
 
 const addCartItem = (cartItems, productToAdd) => {
@@ -49,7 +50,8 @@ export const CartProvider = ({children}) =>{
     const [cartTotal, setCartTotal] = useState(0);
     const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
     const [currentCurrencySymbol, setCurrentCurrencySymbol] = useState('$');
-    const[isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     const toggleDropdown = () => {
       (isOpen) ? setIsOpen(false) : setIsOpen(true);
@@ -97,9 +99,9 @@ export const CartProvider = ({children}) =>{
 
       useEffect(() => {
         const cartTotal = cartItems.reduce(
-          (total, cartItem) => total + cartItem.quantity* cartItem.prices.find((price) => 
+          (total, cartItem) => total + cartItem.quantity * cartItem.prices.find((price) => 
           price.currency.label === currentCurrencyLabel).amount, 0);
-        setCartTotal(cartTotal);
+        setCartTotal(cartTotal.toFixed(2));
       }, [cartItems]);
 
     
@@ -116,6 +118,8 @@ export const CartProvider = ({children}) =>{
         isOpen,
         toggleDropdown,
         closeCurrencyMenu,
+        isCartOpen,
+        setIsCartOpen
         // getAttributes,
     };
 

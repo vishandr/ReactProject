@@ -11,17 +11,19 @@ class CartDropdown extends React.Component{
         this.cartRef = React.createRef;
         this.cartRef2 = React.createRef;
         
+        
         this.state = {
             isCartOpen : false,
         };
-        this.toggleIsCartOpen = () => {
-            this.setState(state => ({
-                isCartOpen : 
-                state.isCartOpen === true
-                ? false
-                : true,
-            }))
-        };
+        // this.toggleIsCartOpen = () => {
+        //     this.setState(state => ({
+        //         isCartOpen : 
+        //         state.isCartOpen === true
+        //         ? false
+        //         : true,
+        //     }))
+        // };
+        
 
         this.setCartRef = this.setCartRef.bind(this);
         this.setCartRef2 = this.setCartRef2.bind(this);
@@ -47,6 +49,7 @@ class CartDropdown extends React.Component{
     handleClickOutside(event){
         // console.log(this.cartRef)
         if(this.state.isCartOpen && this.cartRef && this.cartRef.contains(event.target) && !this.cartRef2.contains(event.target)){
+        // if(this.state.isCartOpen && this.cartRef && this.cartRef.contains(event.target) && !this.cartRef2.contains(event.target)){
             this.setState({
                 isCartOpen : false
                 });
@@ -55,7 +58,7 @@ class CartDropdown extends React.Component{
 
 
     render(){
-        const { currentCurrencySymbol, cartTotal, cartCount, cartItems } = this.context
+        const { currentCurrencySymbol, cartTotal, cartCount, cartItems, isCartOpen } = this.context
         const navigate = this.props.navigate;
         const goToCart = () => {
             navigate('/cart')
@@ -63,9 +66,9 @@ class CartDropdown extends React.Component{
 
         return(
             <div className="cart-dropdown-wrapper" >
-                <CartLogo onClick={this.toggleIsCartOpen}/>
+                {/* <CartLogo onClick={this.toggleIsCartOpen}/> */}
                 {this.state.isCartOpen && <div className="cart-overlay" ref={this.setCartRef}>
-                <div className="cart-dropdown-container" ref={this.setCartRef2}>
+                <div className="cart-dropdown-container" ref={this.setCartRef2}> 
                     <b>My Bag,</b>
                     <span>{cartCount} items</span>
                     <div className="cart-items">
