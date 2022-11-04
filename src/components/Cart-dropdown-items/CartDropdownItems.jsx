@@ -21,15 +21,16 @@ class CartDropdownItems extends React.Component{
                 </p>
 
                     <div className='cart-dropdown-attributes'>
-                    {attributes.map((el) => 
-                    <div key={el.id}><p className="cart-dropdown-attribute-name">{el.name}:</p>
-                    <div className='cart-dropdown-attributes-container'>{el.items.map((attr) => 
-                    <div key={attr.id} className="cart-dropdown-attribute-size" style={{backgroundColor: attr.value}}>
-                    {/* {attr.value} */}
-                    {(el.name === 'Color') ? null: attr.value }
-                    
-                    </div>)}</div>
-                    </div>)}
+                        {attributes.map((el) => 
+                        <div key={el.id}>
+                            <p className="cart-dropdown-attribute-name">{el.name}:</p>
+                            <div className='cart-dropdown-attributes-container'>
+                                {el.items.map((attr) => 
+                                <div key={attr.id} className="cart-dropdown-attribute-size" style={{backgroundColor: attr.value}}>
+                                    {(el.name === 'Color') ? null: attr.value }
+                                </div>)}
+                            </div>
+                        </div>)}
                     </div>
 
                 </div>

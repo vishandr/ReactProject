@@ -12,14 +12,6 @@ class Product extends React.Component{
         }
     }
 
-
-    componentDidMount(){
-        // console.log(productId);
-        // this.setState({
-        //     img: item
-        // })
-    }
-
     setMainImg = (item) => () => {
         this.setState({img: item}); 
     }
@@ -68,83 +60,102 @@ class Product extends React.Component{
                     <img key={image} src={image} className="pdp_img" alt={item.id} onClick={this.setMainImg(image)}/>
                     )}
                 </div>
-                {/* <img src={item.gallery[0]} alt="" className="main_img"/> */}
-                <img src={(this.state.img === '' ) ? item.gallery[0] : this.state.img} alt="" className="main_img"/>
-                {/* <img src={this.state.img} alt="" className="main_img"/> */}
-                
-                <p className="item-brand">{item.brand}</p>
-                <p className="item-name">{item.name}</p>
+                <div className="main-img-box">
+                    <img src={(this.state.img === '' ) ? item.gallery[0] : this.state.img} alt="" className="main_img"/>
+                </div>
+                <div className="pdp-description-box">
+                    <p className="item-brand">{item.brand}</p>
+                    <p className="item-name">{item.name}</p>
 
 
-                {/* workable as a list */}
-                {item.attributes.map((el) => 
-                    <ul key={el.id} value={el.id}>
-                    {el.name.toUpperCase()}:
-                    {el.items.map((attr, i) => 
-                    <li key={attr.id}
-                    value={attr.value} 
-                    onClick={() => changeAttrID(i)}
-                    className={this.state.categoryID === i ? 'active' : ''}
-                    > 
-                    {attr.value} </li>)}
-                    </ul>)}
+                    {/* workable as a list */}
+                    {/* {item.attributes.map((el) => 
+                        <ul key={el.id} value={el.id}>
+                        {el.name.toUpperCase()}:
+                        {el.items.map((attr, i) => 
+                        <li key={attr.id}
+                        value={attr.value} 
+                        onClick={() => changeAttrID(i)}
+                        className={this.state.categoryID === i ? 'active' : ''}
+                        > 
+                        {attr.value} </li>)}
+                        </ul>)} */}
 
-{/*                 
+    {/*                 
 
-                {item.attributes.map(el => 
-                <div key={el.id}>{el.id}</div>)
-                } */}
-{/*             
-                {item.attributes[0].items.map(el => {
-                    <label for={el.value}> {el.value} 
-                        <input type='radio' id={el.value}/> 
-                    </label>
-                })
-                } */}
-                
-
-                 {/* выводит атрибуты
-                {item.attributes[0].items.map(el => 
-                <div>{el.value}</div>)
-                } */}
-            
-            {/* выводит инпуты без подписей */}
-                {/* {item.attributes[0].items.map(el =>
-                        <input type='radio'/> 
-                )
-                } */}
-
-
-
-                {/* {item.attributes[0].items.map(el => {
-                    <label>{el.id}
-                        <input type='radio'/>
-                    </label>
-                })
-                } */}
-
-
-
-                {/* {item.attributes.map(el => el.items.map(attr => 
-                <div key={attr.id}>{attr.value}</div>))
-                } */}
-
+                    {item.attributes.map(el => 
+                    <div key={el.id}>{el.id}</div>)
+                    } */}
+    {/*             
+                    {item.attributes[0].items.map(el => {
+                        <label for={el.value}> {el.value} 
+                            <input type='radio' id={el.value}/> 
+                        </label>
+                    })
+                    } */}
                     
-                    {/* workable variant
-                    {item.attributes.map((el) => 
-                    <div key={el.id} value={el.id}><p className="attribute-name">{el.name.toUpperCase()}:</p>
-                    {el.items.map((attr) => 
-                    <div key={attr.id} value={attr.value} className="size">{attr.value}</div>)}
-                    </div>)} */}
+
+                    {/* выводит атрибуты
+                    {item.attributes[0].items.map(el => 
+                    <div>{el.value}</div>)
+                    } */}
                 
-                <p className="attribute-name">PRICE:</p>
-                <p className="price">{currentCurrencySymbol}
-                {item.prices.find((item) =>
-                    item.currency.label === currentCurrencyLabel).amount}
-                </p>
-                <button className="button_add_to_cart"
-                        onClick={addProductToCart}>ADD TO CART</button>
-                <div dangerouslySetInnerHTML={createMarkup()} />
+                {/* выводит инпуты без подписей */}
+                    {/* {item.attributes[0].items.map(el =>
+                            <input type='radio'/> 
+                    )
+                    } */}
+
+
+
+                    {/* {item.attributes[0].items.map(el => {
+                        <label>{el.id}
+                            <input type='radio'/>
+                        </label>
+                    })
+                    } */}
+
+
+
+                    {/* {item.attributes.map(el => el.items.map(attr => 
+                    <div key={attr.id}>{attr.value}</div>))
+                    } */}
+
+                        
+                        {/* {item.attributes.map((el) => 
+                        <div className="pdp-attributes-box" key={el.id} value={el.id}>
+                            <p className="attribute-name">{el.name.toUpperCase()}:</p>
+                            <div className="pdp-attributes-values">
+                                
+                                {el.items.map((attr) => 
+                                <div key={attr.id} value={attr.value} className="size">
+                                    {attr.value}
+                                    </div>)}
+                            </div>
+                                </div>
+                        )} */}
+
+    <div className="pdp-attributes-box">
+        {item.attributes.map((el) => 
+        <div key={el.id} value={el.id}>
+            <p className="attribute-name">{el.name.toUpperCase()}:</p>
+            <div className="pdp-attributes-values">
+                {el.items.map((attr) => 
+                <div key={attr.id} value={attr.value} className="size" style={{backgroundColor: attr.value}}>
+                {(el.name === 'Color') ? null: attr.value }
+                </div>)}
+            </div>
+        </div>)}
+    </div>      
+                    <p className="attribute-name">PRICE:</p>
+                    <div className="price">{currentCurrencySymbol}
+                    {item.prices.find((item) =>
+                        item.currency.label === currentCurrencyLabel).amount}
+                    </div>
+                    <button className="button_add_to_cart"
+                            onClick={addProductToCart}>ADD TO CART</button>
+                    <div dangerouslySetInnerHTML={createMarkup()} />
+                </div>
             </div>
             )
     }

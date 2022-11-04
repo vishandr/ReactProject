@@ -18,7 +18,6 @@ class CartPageItem extends React.Component{
         const removeItemHandler = () => this.context.removeItemFromCart(this.props.cartItem);
     
         const changeImagePrev = () =>{
-            console.log(this.state.i);
             (this.state.i === 0) ? 
             this.setState({i: gallery.length-1}): 
             this.setState({i: this.state.i - 1})
@@ -30,7 +29,6 @@ class CartPageItem extends React.Component{
             this.setState({i: this.state.i + 1})
         }
         
-        console.log({gallery})
         return(
             <div className='cart-item-container'>
                 <div className='cart-item-description-container'>
