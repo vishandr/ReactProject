@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Product from "./components/Product/Product";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 import {Routes, Route} from 'react-router-dom'
 
 
@@ -45,6 +46,7 @@ class App extends React.Component {
               items = {this.state.currentItems}
               />} />
               <Route path="/cart" element={<Cart/>} />
+              <Route path="/checkout" element={<Checkout/>} />
               <Route path="*" element={<h2>Page not found</h2>} />
             </Route>
           </Routes>

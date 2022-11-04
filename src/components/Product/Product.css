@@ -35,13 +35,18 @@ color: #1D1F22;
 }
 
 .size{
-    width: 63px;
-    height: 45px;
+    /* width: 63px; */
+    /* height: 45px; */
+    min-width: 36px;
+    min-height: 36px;
     border: solid #1D1F22 1px;
     display: flex;
     float: right;
-    margin: 12px;
+    padding: 12px;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .button_add_to_cart{

@@ -17,10 +17,10 @@ class Cart extends React.Component{
                         />
                 ))}
                 <div className="order-box">
-                    <p>Tax 21%: {currentCurrencySymbol} {Math.floor(cartTotal * 21) / 100 }</p>
-                    <p>Quantity: <b>{cartCount}</b> </p>
-                    <p>Total: <b> {currentCurrencySymbol}  { cartTotal }</b></p>
-                    <button>ORDER</button>
+                    <p>Tax 21%: <span className="figures">{currentCurrencySymbol} {Math.floor(cartTotal * 21) / 100 }</span></p>
+                    <p>Quantity: <span className="figures">{cartCount}</span> </p>
+                    <p className="total-sum">Total: <span className="figures"> {currentCurrencySymbol}  { cartTotal }</span></p>
+                    <button className="cart-button">ORDER</button>
                 </div>
             </>
         )

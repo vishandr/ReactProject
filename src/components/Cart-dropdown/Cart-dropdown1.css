@@ -37,5 +37,65 @@
     width: 100%;
     /* border: 1px solid red; */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
+.total-zone{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.total-zone :first-child{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #1D1F22;
+}
+
+.total-zone :last-child{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.buttons-area{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%
+}
+
+.go-to-checkout-button{
+    padding: 16px 32px;
+    color: #FFFFFF;
+    width: 50%;
+    height: 52px;
+    border: none;
+    background: #5ECE7B;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.viev-bag-button{
+    align-items: center;
+    padding: 16px 32px;
+    color: #1D1F22;
+    width: 50%;
+    height: 52px;
+    border: none;
+    background: #FFFFFF;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    cursor: pointer;
+    border:1px solid #1D1F22
+}
