@@ -50,26 +50,18 @@
   top: 23px;
 }
 
-select{
-  border: none;
-  background-color: #FFFFFF;
-  font-size: 18px;
-  color: #1D1F22;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
-  text-align: right;
-  transition: all 0.5s ease;
-}
-
-.option{
-  border: none;
-  background-color: #FFFFFF;
-  font-size: 18px;
-  color: #1D1F22;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
-  text-align: right;
-  transition: all 0.5s ease;
+.cart-count{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -2px;
+  right: -12px;
+  border-radius: 10px;
+  background-color: black;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

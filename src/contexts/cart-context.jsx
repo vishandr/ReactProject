@@ -55,6 +55,7 @@ export const CartProvider = ({children}) =>{
 
     const toggleDropdown = () => {
       (isOpen) ? setIsOpen(false) : setIsOpen(true);
+      
   }
 
   const closeCurrencyMenu = () => setIsOpen(false);

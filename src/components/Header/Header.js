@@ -16,7 +16,7 @@ import CartDropdown1 from "../Cart-dropdown/Cart-dropdown1";
 class Header extends React.Component{
 
   render(){
-    const { isCartOpen } = this.context;
+    const { isCartOpen, cartCount } = this.context;
     return(
       <header className="header">
           {/* <div className="nav-links"> */}
@@ -29,6 +29,7 @@ class Header extends React.Component{
           <div className="actions">
             <Currency />   
             <CartIcon />
+            {(cartCount > 0) && <div className="cart-count">{cartCount}</div>}
             {/* {isCartOpen && <CartDropdown />} */}
           </div>
             {isCartOpen && <CartDropdown1 />}

@@ -6,13 +6,14 @@
     flex-direction: column;
     margin-right: 40px;
     float: left;
-    cursor: pointer;
+    /* cursor: pointer; */
     gap: 40px;
 }
 
 .pdp_img{
     width: 79px;
     height: 80px;
+    cursor: pointer;
 }
 
 .main-img-box{
