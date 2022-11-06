@@ -3,7 +3,7 @@ import './Cart-dropdown.css';
 import { CartContext } from '../../contexts/cart-context';
 import CartDropdownItems from "../Cart-dropdown-items/CartDropdownItems";
 import { useNavigate } from 'react-router-dom'
-import { ReactComponent as CartLogo} from '../../assets/cart.svg'
+// import { ReactComponent as CartLogo} from '../../assets/cart.svg'
 
 class CartDropdown extends React.Component{
     constructor(props){

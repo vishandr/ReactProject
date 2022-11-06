@@ -19,6 +19,10 @@
     content: "\2304"
 }
 
+.dropdown-currency.isActive::after{
+    content: "\2303"
+}
+
 .currency-select{
     position: absolute;
     box-sizing: border-box;

@@ -5,6 +5,7 @@ import Product from "./components/Product/Product";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
 import {Routes, Route} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -21,6 +22,8 @@ class App extends React.Component {
   }
   
   chooseCategory(category){
+    const navigate = this.props.navigate;
+    navigate('/');
     if (category === 'all'){
       this.setState({currentItems: this.state.items})
       this.setState({currentCategory: "All products"})
@@ -30,10 +33,10 @@ class App extends React.Component {
       currentItems: this.state.items.filter(el => el.category === category)
     })
     this.setState({currentCategory: category})
-    // console.log('currentItems = '+ this.state.currentItems)
       };
 
   render(){
+    
     return (
       <>
           <Routes>
@@ -56,4 +59,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+// export default App;
+
+export default (props) => (
+  <App 
+  {...props}
+  navigate={useNavigate()}
+/>);

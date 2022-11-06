@@ -28,9 +28,13 @@ function Currency(props){
     const { loading, error, data} = useQuery(GET_CURRENCY);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :</p>;
+    let className = "dropdown-currency";
+    if (isOpen){className += ' isActive'}
+
     return(
         <>
-            <div className='dropdown-currency' ref={ref1}
+            <div className={className}
+                ref={ref1}
                 onClick={toggleDropdown}
                 >{currentCurrencySymbol}
             </div>

@@ -11,6 +11,7 @@ import { ReactComponent as Shoplogo} from "../../assets/a-logo.svg"
 // import { ReactComponent as CartLogo} from '../../assets/cart.svg'
 import CartIcon from '../Cart-icon/Cart-icon'
 import CartDropdown1 from "../Cart-dropdown/Cart-dropdown1";
+// import { useNavigate } from 'react-router-dom'
 
 
 class Header extends React.Component{
@@ -40,3 +41,4 @@ class Header extends React.Component{
 }
 Header.contextType = CartContext;
 export default Header;
+
