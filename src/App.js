@@ -4,8 +4,7 @@ import Categories from "./components/Categories/Categories";
 import Product from "./components/Product/Product";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
-import {Routes, Route} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -13,7 +12,6 @@ class App extends React.Component {
     super(props)
     this.chooseCategory = this.chooseCategory.bind(this);
     this.state = { 
-      // currentCurrency : 'USD',
       items : this.props.data,
       currentItems : [],
       currentCategory: 'ALL'

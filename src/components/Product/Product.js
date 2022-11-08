@@ -8,20 +8,25 @@ class Product extends React.Component{
         super();
         this.state = {
             img: '',
-            categoryID: 0
+            categoryID: 0,
+            attributes: ''
         }
     }
 
+    // setAttributes = (attr.value) = () => {
+    //     this.setState({attributes: attr.value})
+    // };
+
     setMainImg = (item) => () => {
         this.setState({img: item}); 
-    }
+    };
 
     render(){
         const { currentCurrencySymbol, 
                 currentCurrencyLabel,
                 addToCart,
-                cartItemsAttributes,
-                getAttributes,
+                // cartItemsAttributes,
+                // getAttributes,
             } = this.context;
 
         const {productId} = this.props.params;
@@ -49,9 +54,6 @@ class Product extends React.Component{
         const changeAttrID = (id) => {
             this.setState({ categoryID: id }); 
         };
-
-        
-        // }
 
         return(
             <div>
@@ -81,67 +83,20 @@ class Product extends React.Component{
                         {attr.value} </li>)}
                         </ul>)} */}
 
-    {/*                 
-
-                    {item.attributes.map(el => 
-                    <div key={el.id}>{el.id}</div>)
-                    } */}
-    {/*             
-                    {item.attributes[0].items.map(el => {
-                        <label for={el.value}> {el.value} 
-                            <input type='radio' id={el.value}/> 
-                        </label>
-                    })
-                    } */}
-                    
-
-                    {/* выводит атрибуты
-                    {item.attributes[0].items.map(el => 
-                    <div>{el.value}</div>)
-                    } */}
-                
-                {/* выводит инпуты без подписей */}
-                    {/* {item.attributes[0].items.map(el =>
-                            <input type='radio'/> 
-                    )
-                    } */}
-
-
-
-                    {/* {item.attributes[0].items.map(el => {
-                        <label>{el.id}
-                            <input type='radio'/>
-                        </label>
-                    })
-                    } */}
-
-
-
-                    {/* {item.attributes.map(el => el.items.map(attr => 
-                    <div key={attr.id}>{attr.value}</div>))
-                    } */}
-
-                        
-                        {/* {item.attributes.map((el) => 
-                        <div className="pdp-attributes-box" key={el.id} value={el.id}>
-                            <p className="attribute-name">{el.name.toUpperCase()}:</p>
-                            <div className="pdp-attributes-values">
-                                
-                                {el.items.map((attr) => 
-                                <div key={attr.id} value={attr.value} className="size">
-                                    {attr.value}
-                                    </div>)}
-                            </div>
-                                </div>
-                        )} */}
-
+ 
     <div className="pdp-attributes-box">
         {item.attributes.map((el) => 
         <div key={el.id} value={el.id}>
             <p className="attribute-name">{el.name.toUpperCase()}:</p>
             <div className="pdp-attributes-values">
                 {el.items.map((attr) => 
-                <div key={attr.id} value={attr.value} className="size" style={{backgroundColor: attr.value}}>
+                <div key={attr.id} value={attr.value} 
+                className="size" 
+                style={{backgroundColor: attr.value}} 
+                onClick={()=>{}}
+                // onClick={() => changeAttrID(i)}
+                // className={this.state.categoryID === i ? 'active' : ''}
+                >
                 {(el.name === 'Color') ? null: attr.value }
                 </div>)}
             </div>

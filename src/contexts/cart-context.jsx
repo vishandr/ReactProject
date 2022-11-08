@@ -35,12 +35,7 @@ const removeCartItem = (cartItems, productToRemove) => {
     );
 };
 
-// const rememberAttributes = (cartItemsAttributes, productToAdd) => {
-  // if (cartItemsAttributes.length === 0){
-    // return [{ id: productToAdd.id, attributes: productToAdd.attributes}]
-  // };
-  // return [...cartItemsAttributes, { ...productToAdd}]
-// };
+
 
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
@@ -59,14 +54,6 @@ export const CartProvider = ({children}) =>{
   }
 
   const closeCurrencyMenu = () => setIsOpen(false);
-
-    // const onCurrencySelect = (event) => {
-    //     let label = event.target.value.slice(0,3)
-    //     setCurrentCurrencyLabel(label);
-    //     let symbol = event.target.value.slice(3)
-    //     setCurrentCurrencySymbol(symbol);
-    //     // setCurrentCurrencySymbol(data.currency.find((el) => el.label === event.target.value).symbol);
-    //     };
         
     // setCartItemsAttributes(productToAdd) => {};
 
@@ -76,9 +63,16 @@ export const CartProvider = ({children}) =>{
       setIsOpen(false);
     }
 
-    // const getAttributes = (productToAdd) => {
-    // setCartItemsAttributes(rememberAttributes(cartItemsAttributes, productToAdd))
-    // };
+    const rememberAttributes = (cartItemsAttributes, productToAdd) => {
+      if (cartItemsAttributes.length === 0){
+        return [{ id: productToAdd.id, attributes: productToAdd.attributes}]
+      };
+      return [...cartItemsAttributes, { ...productToAdd}]
+    };
+
+    const getAttributes = (attributeToAdd) => {
+    setCartItemsAttributes(rememberAttributes(cartItemsAttributes, attributeToAdd))
+    };
 
     // const addAttributesToCart = (productToAdd) => {
     //   setCartItemsAttributes(addCartItemAttributes((cartItemsAttributes, productToAdd)))
@@ -115,12 +109,12 @@ export const CartProvider = ({children}) =>{
         onCurrencySelect,
         currentCurrencyLabel,
         currentCurrencySymbol,
-        cartItemsAttributes,
         isOpen,
         toggleDropdown,
         closeCurrencyMenu,
         isCartOpen,
-        setIsCartOpen
+        setIsCartOpen,
+        cartItemsAttributes,
         // getAttributes,
     };
 
