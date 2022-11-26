@@ -1,3 +1,4 @@
+import { GraphQLEnumType } from 'graphql';
 import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext({
@@ -5,7 +6,42 @@ export const CartContext = createContext({
   setIsCartOpen: () => {},
 });
 
+//workable variant
+// const addCartItem = (cartItems, productToAdd) => {
+//   const existingCartItem = cartItems.find(
+//       (cartItem) => cartItem.id === productToAdd.id
+//     );
+//   if (existingCartItem) {
+//   return cartItems.map((cartItem) =>
+//       cartItem.id === productToAdd.id
+//       ? { ...cartItem, quantity: cartItem.quantity + 1 }
+//       : cartItem
+//   );
+//   }
+//   return [...cartItems, { ...productToAdd, quantity: 1 }];
+// };
+
+//use this for green icon 'add to cart'
 const addCartItem = (cartItems, productToAdd) => {
+  const existingCartItem = cartItems.find(
+      (cartItem) => cartItem.id === productToAdd.id
+    );
+    const selectedAttr = productToAdd.attributes.map((attribute) => ({
+      id: attribute.id, item: attribute.items[0].value
+    }));
+    
+    if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+        cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+    }
+    return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: selectedAttr }];
+};
+
+//use this for button 'add to cart' from PDP
+const addCartItemPDP = (cartItems, productToAdd, cartItemsAttributes) => {
     const existingCartItem = cartItems.find(
         (cartItem) => cartItem.id === productToAdd.id
       );
@@ -16,7 +52,9 @@ const addCartItem = (cartItems, productToAdd) => {
         : cartItem
     );
     }
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
+    //добавить в массив cartItemsAttributes id добавляемого єлемента и в строке ниже добавляя 
+    //selectedAttr фильтровать этот элемент из массива
+    return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: cartItemsAttributes }];
 };
 
 const removeCartItem = (cartItems, productToRemove) => {
@@ -35,12 +73,9 @@ const removeCartItem = (cartItems, productToRemove) => {
     );
 };
 
-
-
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
     const [cartItemsAttributes, setCartItemsAttributes] = useState([]);
-    // const [productAttributes, setProductAttributes] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
     const [currentCurrencyLabel, setCurrentCurrencyLabel] = useState('USD');
@@ -50,12 +85,9 @@ export const CartProvider = ({children}) =>{
 
     const toggleDropdown = () => {
       (isOpen) ? setIsOpen(false) : setIsOpen(true);
-      
   }
 
   const closeCurrencyMenu = () => setIsOpen(false);
-        
-    // setCartItemsAttributes(productToAdd) => {};
 
     const onCurrencySelect = (event) => {
       setCurrentCurrencyLabel(event.target.attributes[1].value);
@@ -63,22 +95,45 @@ export const CartProvider = ({children}) =>{
       setIsOpen(false);
     }
 
-    const rememberAttributes = (cartItemsAttributes, productToAdd) => {
-      if (cartItemsAttributes.length === 0){
-        return [{ id: productToAdd.id, attributes: productToAdd.attributes}]
+    const saveAttributes = (event) => {
+        const existingAttribute = cartItemsAttributes.find(item => item.id === event.target.parentNode.parentNode.attributes[0].nodeValue);
+      if (existingAttribute){
+          return cartItemsAttributes.map((item) => 
+          item.id === event.target.parentNode.parentNode.attributes[0].nodeValue 
+          ? {
+              "id": event.target.parentNode.parentNode.attributes[0].nodeValue,
+              "item": event.target.attributes[0].nodeValue
+            }
+          : item)
+      }
+      return [...cartItemsAttributes, {
+              // "product_id": productId,
+              "id": event.target.parentNode.parentNode.attributes[0].nodeValue,
+              "item": event.target.attributes[0].nodeValue,
+          }]
       };
-      return [...cartItemsAttributes, { ...productToAdd}]
-    };
 
-    const getAttributes = (attributeToAdd) => {
-    setCartItemsAttributes(rememberAttributes(cartItemsAttributes, attributeToAdd))
-    };
+        const addAttributesToCart = (productId) => {
+          setCartItemsAttributes(saveAttributes((cartItemsAttributes, productId)));
+          // console.log(cartItemsAttributes)
+        };
 
-    // const addAttributesToCart = (productToAdd) => {
-    //   setCartItemsAttributes(addCartItemAttributes((cartItemsAttributes, productToAdd)))
-    // };
+//переписываем массив cartItems, в котором при клике на атрибут - переписываем этот элемент с новыми атрибутами, а остальные элементы переносим как есть
+const changeSelectedAttribute = (cartItems, product, event) => {
+    setCartItems(cartItems.map(item => item.name === product.name
+          ? {...item, selectedAttr: item.selectedAttr.map(attribute => attribute.id === event.target.parentNode.parentNode.firstChild.firstChild.nodeValue
+            ? {"id": attribute.id,
+              "item": event.target.firstChild.nodeValue}
+              : attribute)}
+          : item)
+      )}
 
-    const addToCart = (productToAdd) => {
+    const addToCartPDP = (productToAdd) => {
+        setCartItems(addCartItemPDP(cartItems, productToAdd, cartItemsAttributes));
+        // setCartItemsAttributes([])
+      };
+    
+      const addToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
       };
     
@@ -103,6 +158,7 @@ export const CartProvider = ({children}) =>{
     const value = {
         cartItems,
         addToCart,
+        addToCartPDP,
         removeItemFromCart,
         cartCount,
         cartTotal,
@@ -115,7 +171,8 @@ export const CartProvider = ({children}) =>{
         isCartOpen,
         setIsCartOpen,
         cartItemsAttributes,
-        // getAttributes,
+        addAttributesToCart,
+        changeSelectedAttribute,
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>

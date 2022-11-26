@@ -8,14 +8,8 @@ class Product extends React.Component{
         super();
         this.state = {
             img: '',
-            categoryID: 0,
-            attributes: ''
         }
     }
-
-    // setAttributes = (attr.value) = () => {
-    //     this.setState({attributes: attr.value})
-    // };
 
     setMainImg = (item) => () => {
         this.setState({img: item}); 
@@ -24,9 +18,10 @@ class Product extends React.Component{
     render(){
         const { currentCurrencySymbol, 
                 currentCurrencyLabel,
-                addToCart,
-                // cartItemsAttributes,
-                // getAttributes,
+                addAttributesToCart,
+                addToCartPDP,
+                cartItemsAttributes,
+                cartItems
             } = this.context;
 
         const {productId} = this.props.params;
@@ -36,24 +31,16 @@ class Product extends React.Component{
         );
 
         const addProductToCart = () => {
-            addToCart(item);
+            addToCartPDP(item);
+            // console.log(cartItems)
         };
+
+        const addAttr = (item) => {
+            addAttributesToCart(item)
+        }
 
         function createMarkup() { 
             return {__html: item.description}; };
-
-        // пробуем получить значение аттрибута по клику + поменять цвет 
-        // const showAttributes = (event) => {
-        //     console.log({
-        //         "attribute name": event.target.parentNode.attributes.value.value,
-        //         "attribute value": event.target.attributes[0].nodeValue,
-        //     });
-        // };
-
-        // const addAttr = addAttributesToCart(item.attributes)
-        const changeAttrID = (id) => {
-            this.setState({ categoryID: id }); 
-        };
 
         return(
             <div>
@@ -68,21 +55,6 @@ class Product extends React.Component{
                 <div className="pdp-description-box">
                     <p className="item-brand">{item.brand}</p>
                     <p className="item-name">{item.name}</p>
-
-
-                    {/* workable as a list */}
-                    {/* {item.attributes.map((el) => 
-                        <ul key={el.id} value={el.id}>
-                        {el.name.toUpperCase()}:
-                        {el.items.map((attr, i) => 
-                        <li key={attr.id}
-                        value={attr.value} 
-                        onClick={() => changeAttrID(i)}
-                        className={this.state.categoryID === i ? 'active' : ''}
-                        > 
-                        {attr.value} </li>)}
-                        </ul>)} */}
-
  
     <div className="pdp-attributes-box">
         {item.attributes.map((el) => 
@@ -91,11 +63,13 @@ class Product extends React.Component{
             <div className="pdp-attributes-values">
                 {el.items.map((attr) => 
                 <div key={attr.id} value={attr.value} 
-                className="size" 
+                className={(el.id === 'Color'
+                ? ((cartItemsAttributes.find(item => 
+                item.id === el.name && item.item === attr.value))) ? 'size_color active-color' : "size_color"
+                :((cartItemsAttributes.find(item => 
+                item.id === el.name && item.item === attr.value))) ? 'size active' : "size")} 
                 style={{backgroundColor: attr.value}} 
-                onClick={()=>{}}
-                // onClick={() => changeAttrID(i)}
-                // className={this.state.categoryID === i ? 'active' : ''}
+                onClick={addAttr}
                 >
                 {(el.name === 'Color') ? null: attr.value }
                 </div>)}

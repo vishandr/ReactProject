@@ -7,7 +7,6 @@ import { CartContext } from '../../contexts/cart-context';
 class CartDropdown1 extends React.Component{
     constructor(props){
         super(props)
-        // this.cartRef = React.createRef;
         this.setCartRef = this.setCartRef.bind(this);
         this.setCartRef2 = this.setCartRef2.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -65,7 +64,6 @@ class CartDropdown1 extends React.Component{
                     </div>
                     <div className="total-zone">
                         <div>Total</div>
-                        {/* <div>1</div> */}
                         <div>{currentCurrencySymbol} {cartTotal}</div>
                     </div>
                     <div className="buttons-area">
@@ -81,7 +79,6 @@ class CartDropdown1 extends React.Component{
 };
 
 CartDropdown1.contextType = CartContext;
-// export default CartDropdown1;
 
 export default (props) => (
     <CartDropdown1 
