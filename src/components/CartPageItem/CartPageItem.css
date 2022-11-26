@@ -1,4 +1,9 @@
 .cart-item-container{
+    display: flex;
+    width: 100%;
+    /* margin: 5px; */
+    /* border: 1px solid #ffff40; */
+    box-sizing: border-box;
     border-top: 1px solid #E5E5E5;
     border-bottom: 1px solid #E5E5E5;
     padding: 24px 0;
