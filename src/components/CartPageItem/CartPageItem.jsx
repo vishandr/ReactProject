@@ -12,8 +12,8 @@ class CartPageItem extends React.Component{
     }
     render(){
         
-        const {gallery, attributes, prices, name, brand, quantity } = this.props.cartItem
-        const { currentCurrencySymbol, currentCurrencyLabel } = this.context
+        const {gallery, attributes, prices, name, brand, quantity, selectedAttr } = this.props.cartItem
+        const { currentCurrencySymbol, currentCurrencyLabel, cartItems, changeSelectedAttributeFromCartPage } = this.context
         const addItemHandler = () => this.context.addToCart(this.props.cartItem);
         const removeItemHandler = () => this.context.removeItemFromCart(this.props.cartItem);
     
@@ -21,14 +21,18 @@ class CartPageItem extends React.Component{
             (this.state.i === 0) ? 
             this.setState({i: gallery.length-1}): 
             this.setState({i: this.state.i - 1})
-        }
+        };
         
         const changeImageNext = () =>{
             (this.state.i === gallery.length-1) ? 
             this.setState({i: 0}): 
             this.setState({i: this.state.i + 1})
-        }
+        };
         
+        const changeAttribute = (event) => {
+            changeSelectedAttributeFromCartPage(cartItems, this.props.cartItem, event)
+        };
+
         return(
             <div className='cart-item-container'>
                 <div className='cart-item-description-container'>
@@ -40,14 +44,20 @@ class CartPageItem extends React.Component{
                         return item.currency.label === currentCurrencyLabel
                     }).amount}
                 </p>
-                    {/* <div> */}
                     {attributes.map((el) => 
                     <div className='cart-atributes-block' key={el.id}>
                     <p className="attribute-name cart-attribute-name">{el.name.toUpperCase()}:</p>
                     <div className='atributes-block'>{el.items.map((attr) => 
-                    <div key={attr.id} className="size" style={{backgroundColor: attr.value}}>{(el.name === 'Color') ? null: attr.value }</div>)}</div>
+                    <div key={attr.id} 
+                        className={(el.id === 'Color'
+                        ? ((selectedAttr.find(item => item.item === attr.value && item.id === el.name))) 
+                            ? 'size_color active-color' : "size_color"
+                        : ((selectedAttr.find(item => 
+                            item.id === el.name && item.item === attr.value))) ? 'size active' : "size")} 
+                     style={{backgroundColor: attr.value}}
+                     onClick={changeAttribute}
+                     >{attr.value }</div>)}</div>
                     </div>)}
-                    {/* </div> */}
                 </div>
 
                 <div className='cart-item-quantity-container'>

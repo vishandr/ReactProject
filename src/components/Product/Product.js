@@ -65,9 +65,9 @@ class Product extends React.Component{
                 <div key={attr.id} value={attr.value} 
                 className={(el.id === 'Color'
                 ? ((cartItemsAttributes.find(item => 
-                item.id === el.name && item.item === attr.value))) ? 'size_color active-color' : "size_color"
+                    item.id === el.name && item.item === attr.value))) ? 'size_color active-color' : "size_color"
                 :((cartItemsAttributes.find(item => 
-                item.id === el.name && item.item === attr.value))) ? 'size active' : "size")} 
+                    item.id === el.name && item.item === attr.value))) ? 'size active' : "size")} 
                 style={{backgroundColor: attr.value}} 
                 onClick={addAttr}
                 >

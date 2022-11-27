@@ -128,6 +128,17 @@ const changeSelectedAttribute = (cartItems, product, event) => {
           : item)
       )}
 
+
+//переписываем массив cartItems из компоненты CartPageItem, в котором при клике на атрибут - переписываем этот элемент с новыми значениями, а остальные элементы переносим как есть
+const changeSelectedAttributeFromCartPage = (cartItems, product, event) => {
+  setCartItems(cartItems.map(item => item.name === product.name
+        ? {...item, selectedAttr: item.selectedAttr.map(attribute => attribute.id.toUpperCase() === event.target.parentNode.parentNode.firstChild.firstChild.nodeValue
+          ? {"id": attribute.id,
+            "item": event.target.firstChild.nodeValue}
+            : attribute)}
+        : item)
+      )}
+
     const addToCartPDP = (productToAdd) => {
         setCartItems(addCartItemPDP(cartItems, productToAdd, cartItemsAttributes));
         // setCartItemsAttributes([])
@@ -173,6 +184,7 @@ const changeSelectedAttribute = (cartItems, product, event) => {
         cartItemsAttributes,
         addAttributesToCart,
         changeSelectedAttribute,
+        changeSelectedAttributeFromCartPage
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>
