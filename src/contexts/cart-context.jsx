@@ -1,25 +1,9 @@
-import { GraphQLEnumType } from 'graphql';
 import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
 });
-
-//workable variant
-// const addCartItem = (cartItems, productToAdd) => {
-//   const existingCartItem = cartItems.find(
-//       (cartItem) => cartItem.id === productToAdd.id
-//     );
-//   if (existingCartItem) {
-//   return cartItems.map((cartItem) =>
-//       cartItem.id === productToAdd.id
-//       ? { ...cartItem, quantity: cartItem.quantity + 1 }
-//       : cartItem
-//   );
-//   }
-//   return [...cartItems, { ...productToAdd, quantity: 1 }];
-// };
 
 //use this for green icon 'add to cart'
 const addCartItem = (cartItems, productToAdd) => {
@@ -42,19 +26,23 @@ const addCartItem = (cartItems, productToAdd) => {
 
 //use this for button 'add to cart' from PDP
 const addCartItemPDP = (cartItems, productToAdd, cartItemsAttributes) => {
-    const existingCartItem = cartItems.find(
-        (cartItem) => cartItem.id === productToAdd.id
-      );
-    if (existingCartItem) {
-    return cartItems.map((cartItem) =>
-        cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
     );
+    if (existingCartItem) {
+      return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+      ? { ...cartItem, quantity: cartItem.quantity + 1 }
+      : cartItem
+      );
     }
-    //добавить в массив cartItemsAttributes id добавляемого єлемента и в строке ниже добавляя 
-    //selectedAttr фильтровать этот элемент из массива
-    return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: cartItemsAttributes }];
+    
+    return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: productToAdd.attributes.map(item => 
+      cartItemsAttributes.find(el => el.id === item.id)
+    ? {id: item.id, item: cartItemsAttributes.find(el => el.id === item.id).item}
+    : {id: item.id, item: item.items[0].value}
+    )
+  }];
 };
 
 const removeCartItem = (cartItems, productToRemove) => {
@@ -72,6 +60,7 @@ const removeCartItem = (cartItems, productToRemove) => {
         : cartItem
     );
 };
+
 
 export const CartProvider = ({children}) =>{
     const [cartItems, setCartItems] = useState([]);
@@ -107,15 +96,13 @@ export const CartProvider = ({children}) =>{
           : item)
       }
       return [...cartItemsAttributes, {
-              // "product_id": productId,
               "id": event.target.parentNode.parentNode.attributes[0].nodeValue,
-              "item": event.target.attributes[0].nodeValue,
+              "item": event.target.attributes[0].nodeValue
           }]
       };
 
         const addAttributesToCart = (productId) => {
           setCartItemsAttributes(saveAttributes((cartItemsAttributes, productId)));
-          // console.log(cartItemsAttributes)
         };
 
 //переписываем массив cartItems, в котором при клике на атрибут - переписываем этот элемент с новыми атрибутами, а остальные элементы переносим как есть

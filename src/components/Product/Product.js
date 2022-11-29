@@ -10,20 +10,20 @@ class Product extends React.Component{
             img: '',
         }
     }
-
+    
     setMainImg = (item) => () => {
         this.setState({img: item}); 
     };
-
+    
     render(){
         const { currentCurrencySymbol, 
-                currentCurrencyLabel,
-                addAttributesToCart,
-                addToCartPDP,
-                cartItemsAttributes,
-                cartItems
-            } = this.context;
-
+            currentCurrencyLabel,
+            addAttributesToCart,
+            addToCartPDP,
+            cartItemsAttributes,
+            cartItems
+        } = this.context;
+        
         const {productId} = this.props.params;
         
         const item = this.props.items.find((el) => 
@@ -32,7 +32,7 @@ class Product extends React.Component{
 
         const addProductToCart = () => {
             addToCartPDP(item);
-            // console.log(cartItems)
+            console.log(cartItems)
         };
 
         const addAttr = (item) => {
