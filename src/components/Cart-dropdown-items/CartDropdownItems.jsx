@@ -47,16 +47,16 @@ class CartDropdownItems extends React.Component{
                 </div>
 
                 <div className='cart-item-quantity-container'>
-                    <div className='cart-item-quantity-box' 
+                    <div className='cart-item-quantity-box-dropdown' 
                     onClick={addItemHandler}
                     >+</div>
                     <div>{quantity}</div>
-                    <div className='cart-item-quantity-box' 
+                    <div className='cart-item-quantity-box-dropdown' 
                     onClick={removeItemHandler}
                     >-</div>
                 </div>
 
-                <div className='cart-item-image-container'>
+                <div className='cart-dropdown-item-image-container'>
                 <img src={gallery[0]} alt="" />
                 
                 </div>
