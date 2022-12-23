@@ -43,7 +43,7 @@ class Product extends React.Component{
             return {__html: item.description}; };
 
         return(
-            <div>
+            <div className="product-description-page">
                 <div className="gallery">
                     {item.gallery.map((image) =>
                     <img key={image} src={image} className="pdp_img" alt={item.id} onClick={this.setMainImg(image)}/>

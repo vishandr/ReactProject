@@ -1,5 +1,6 @@
 .cart-item-container{
     display: flex;
+    justify-content: space-between;
     width: 100%;
     /* margin: 5px; */
     /* border: 1px solid #ffff40; */
@@ -79,6 +80,8 @@
 
 .cart-item-image-container{
     position: relative;
+    max-width: 200px;
+    max-height: 288px;
 }
 .cart-image-carret-box{
     display: flex;
@@ -98,12 +101,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .cart-image-carret-right{
     transform: rotate(-180deg);
 }
 
-.carret :hover{
-    transform: matrix(1, 0, 0, -, 0, 0);
-}
+/* .carret :hover{ */
+    /* transform: matrix(1, 0, 0, 0, 0); */
+/* } */

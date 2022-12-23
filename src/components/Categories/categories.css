@@ -11,12 +11,18 @@
 }
 
 main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+/* workable flex
+main{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
     justify-content: space-between
-}
+} */
 
 p{
     font-weight: 300;

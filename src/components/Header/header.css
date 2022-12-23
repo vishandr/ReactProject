@@ -65,3 +65,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.cart-icon-container{
+  cursor: pointer;
+}

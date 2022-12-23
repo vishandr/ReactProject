@@ -25,6 +25,28 @@ const addCartItem = (cartItems, productToAdd) => {
 };
 
 //use this for button 'add to cart' from PDP
+//workable in case we add first value for each attribute in case nothing is choosed by user
+// const addCartItemPDP = (cartItems, productToAdd, cartItemsAttributes) => {
+//   const existingCartItem = cartItems.find(
+//     (cartItem) => cartItem.id === productToAdd.id
+//     );
+//     if (existingCartItem) {
+//       return cartItems.map((cartItem) =>
+//       cartItem.id === productToAdd.id
+//       ? { ...cartItem, quantity: cartItem.quantity + 1 }
+//       : cartItem
+//       );
+//     }
+    
+//     return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: productToAdd.attributes.map(item => 
+//       cartItemsAttributes.find(el => el.id === item.id)
+//     ? {id: item.id, item: cartItemsAttributes.find(el => el.id === item.id).item}
+//     : {id: item.id, item: item.items[0].value}
+//     )
+//   }];
+// };
+
+//try to use for case if it should not be possible to add product to cart without selecting all attributes
 const addCartItemPDP = (cartItems, productToAdd, cartItemsAttributes) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -37,6 +59,10 @@ const addCartItemPDP = (cartItems, productToAdd, cartItemsAttributes) => {
       );
     }
     
+    // if (cartItemsAttributes.length !== productToAdd.attributes.length) {
+    //   alert('pls select all attr');
+    //   return
+    // } 
     return [...cartItems, { ...productToAdd, quantity: 1, selectedAttr: productToAdd.attributes.map(item => 
       cartItemsAttributes.find(el => el.id === item.id)
     ? {id: item.id, item: cartItemsAttributes.find(el => el.id === item.id).item}
@@ -127,6 +153,11 @@ const changeSelectedAttributeFromCartPage = (cartItems, product, event) => {
       )}
 
     const addToCartPDP = (productToAdd) => {
+      console.log(cartItemsAttributes);
+      if (cartItemsAttributes.length !== productToAdd.attributes.length) {
+        alert('pls select all attr');
+        return
+    } 
         setCartItems(addCartItemPDP(cartItems, productToAdd, cartItemsAttributes));
         // setCartItemsAttributes([])
       };

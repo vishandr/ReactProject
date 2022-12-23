@@ -36,6 +36,7 @@
     border: #1D1F22 solid 1px;
     min-width: 20px;
     min-height: 20px;
+    cursor: pointer;
 }
 
 .cart-dropdown-attribute-active{
@@ -80,5 +81,5 @@
     box-sizing: border-box;
     width: 24px;
     height: 24px;
-    
+    cursor: pointer;
 }
