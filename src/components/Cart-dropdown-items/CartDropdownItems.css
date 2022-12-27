@@ -59,12 +59,15 @@
 
 .cart-dropdown-item-image-container{
     width: 40%;
-    /* flex: none; */
+    display:flex;
     max-width: 121px;
+    align-items: center;
 }
 
 .cart-dropdown-item-image-container img{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
 }
 
 .cart-item-quantity-container{

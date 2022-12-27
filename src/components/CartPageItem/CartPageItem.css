@@ -80,8 +80,10 @@
 
 .cart-item-image-container{
     position: relative;
-    max-width: 200px;
-    max-height: 288px;
+    min-width: 200px;
+    height: 288px;
+    display: flex;
+    justify-content: center;
 }
 .cart-image-carret-box{
     display: flex;
