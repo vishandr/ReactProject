@@ -2,11 +2,14 @@
 
 .product-description-page{
     padding-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
 }
 
 .gallery{
     display: inline-flex;
-    width: 79px;
+    width: 5.55%;
     flex-direction: column;
     margin-right: 40px;
     float: left;
@@ -20,16 +23,17 @@
 }
 
 .main-img-box{
-    width: 610px;
-    display: inline-flex;
+    width: 42.36%;
+    display: flex;
     float: left;
     justify-content: center;
     /* border: 1px solid red */
 }
 
 .main_img{
-    max-width: 610px;
-    height: 511px;
+    /* width: 610px; */
+    width: 100%;
+    min-height: 511px;
     /* margin-right: 100px; */
     object-fit: cover;
     box-sizing: border-box;
@@ -39,6 +43,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 20.3%;
 }
 .pdp-description-box p{
     margin: 0;
