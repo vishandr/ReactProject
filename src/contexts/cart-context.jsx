@@ -153,13 +153,13 @@ const changeSelectedAttributeFromCartPage = (cartItems, product, event) => {
       )}
 
     const addToCartPDP = (productToAdd) => {
-      console.log(cartItemsAttributes);
+      // console.log(cartItemsAttributes);
       if (cartItemsAttributes.length !== productToAdd.attributes.length) {
         alert('pls select all attr');
         return
     } 
         setCartItems(addCartItemPDP(cartItems, productToAdd, cartItemsAttributes));
-        // setCartItemsAttributes([])
+        setCartItemsAttributes([])
       };
     
       const addToCart = (productToAdd) => {

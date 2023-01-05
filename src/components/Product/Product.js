@@ -21,7 +21,7 @@ class Product extends React.Component{
             addAttributesToCart,
             addToCartPDP,
             cartItemsAttributes,
-            cartItems
+            // cartItems
         } = this.context;
         
         const {productId} = this.props.params;
@@ -32,7 +32,7 @@ class Product extends React.Component{
 
         const addProductToCart = () => {
             addToCartPDP(item);
-            console.log(cartItems)
+            // console.log(cartItems)
         };
 
         const addAttr = (item) => {

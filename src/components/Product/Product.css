@@ -27,6 +27,7 @@
     display: flex;
     float: left;
     justify-content: center;
+    display: inline-block;
     /* border: 1px solid red */
 }
 
